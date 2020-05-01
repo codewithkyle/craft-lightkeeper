@@ -1,0 +1,44 @@
+{
+    "name": "codewithkyle/lightkeeper",
+    "description": "Lightkeeper helps to integrate and automate Google Lighthouse testing.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "lightkeeper"
+    ],
+    "support": {
+        "docs": "https://github.com/codewithkyle/lightkeeper/blob/master/README.md",
+        "issues": "https://github.com/codewithkyle/lightkeeper/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kyle Andrews",
+            "homepage": "https://kyleandrews.dev/"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "codewithkyle\\lightkeeper\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Lightkeeper",
+        "handle": "lightkeeper",
+        "developer": "Kyle Andrews",
+        "developerUrl": "https://kyleandrews.dev/",
+        "documentationUrl": "https://github.com/codewithkyle/lightkeeper/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/codewithkyle/lightkeeper/master/CHANGELOG.md",
+        "components": {
+            "lightkeeperService": "codewithkyle\\lightkeeper\\services\\LightkeeperService"
+        },
+        "class": "codewithkyle\\lightkeeper\\Lightkeeper"
+    }
+}
