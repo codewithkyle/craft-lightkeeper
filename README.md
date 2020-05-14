@@ -1,32 +1,40 @@
 # Lightkeeper
 
-Lightkeeper helps to integrate and automate Google Lighthouse testing.
+Lightkeeper helps to integrate and automate Google Lighthouse testing along with automated performance monitoring and reporting.
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
-
-## Installation
-
-To install the plugin, follow these instructions.
-
-1. Open your terminal and go to your Craft project:
-
-        cd /path/to/project
-
-2. Then tell Composer to load the plugin:
-
-        composer require codewithkyle/lightkeeper
-
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Lightkeeper.
+This plugin requires Craft CMS 3.4.0 or later.
 
 ## Lightkeeper Roadmap
 
-Some things to do, and ideas for potential features:
-
 * Add settings
-* Add automated test
+    * Allow developers to choose what sections/categories/singles are tracked & logged
+    * API key (optional)
+    * Minimum scores before developers are notified
+        * Perfromance
+        * Accessability
+        * Best Practices
+    * Email on poor performance (lightswitch)
+    * Developer email address
 * Add side panel component
-* Add manual test
-* Add response cache
-* Add ability to clear response cache
+    * Manual test button
+    * Accessability test (pass/fail)
+    * Perf test (0/100)
+    * Best Practices test (0/100)
+    * SEO test (0/100)
+* Caching
+    * Response cache
+    * Ability to clear response cache
+* Perfromance Section
+    * Add Web Vitals library injection variable
+    * Log Web Vitals in section labeled Performance
+        * Largest Contentful Paint
+        * First Input Delay
+        * Cumulative Layout Shift
+        * Users connection type
+        * RAM
+        * CPU
+        * Browser
+        * Window size
+        * Available storage
