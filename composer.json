@@ -8,11 +8,15 @@
         "cms",
         "craftcms",
         "craft-plugin",
-        "lightkeeper"
+        "lighthouse",
+        "performance",
+        "user-experience",
+        "reporting",
+        "auditing"
     ],
     "support": {
-        "docs": "https://github.com/codewithkyle/lightkeeper/blob/master/README.md",
-        "issues": "https://github.com/codewithkyle/lightkeeper/issues"
+        "docs": "https://github.com/codewithkyle/craft-lightkeeper/blob/master/README.md",
+        "issues": "https://github.com/codewithkyle/craft-lightkeeper/issues"
     },
     "license": "MIT",
     "authors": [
@@ -34,8 +38,8 @@
         "handle": "lightkeeper",
         "developer": "Kyle Andrews",
         "developerUrl": "https://kyleandrews.dev/",
-        "documentationUrl": "https://github.com/codewithkyle/lightkeeper/blob/master/README.md",
-        "changelogUrl": "https://raw.githubusercontent.com/codewithkyle/lightkeeper/master/CHANGELOG.md",
+        "documentationUrl": "https://github.com/codewithkyle/craft-lightkeeper/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/codewithkyle/craft-lightkeeper/master/CHANGELOG.md",
         "components": {
             "lightkeeperService": "codewithkyle\\lightkeeper\\services\\LightkeeperService"
         },
