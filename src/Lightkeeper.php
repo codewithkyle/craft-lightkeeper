@@ -19,6 +19,8 @@ use craft\services\Plugins;
 use craft\events\PluginEvent;
 use craft\events\RegisterCpNavItemsEvent;
 use craft\web\twig\variables\Cp;
+use craft\web\twig\variables\CraftVariable;
+use codewithkyle\lightkeeper\variables\LightkeeperVariable;
 
 use yii\base\Event;
 
@@ -85,6 +87,16 @@ class Lightkeeper extends Plugin
         Craft::setAlias('@lightkeeper', __DIR__);
         parent::init();
         self::$plugin = $this;
+
+        Event::on(
+            CraftVariable::class,
+            CraftVariable::EVENT_INIT,
+            function (Event $event)
+            {
+                $variable = $event->sender;
+                $variable->set('lightkeeper', LightkeeperVariable::class);
+            }
+        );
 
         Event::on(
             Cp::class,

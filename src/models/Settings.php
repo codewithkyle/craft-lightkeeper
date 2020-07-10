@@ -49,6 +49,21 @@ class Settings extends Model
     /** @var int */
     public $minimumSeo = '100';
 
+    /** @var int */
+    public $lcpThreshold = 2500;
+
+    /** @var int */
+    public $fidThreshold = 100;
+
+    /** @var float */
+    public $clsThreshold = 0.1;
+
+    /** @var int */
+    public $fcpThreshold = 2000;
+
+    /** @var int */
+    public $ttfbThreshold = 600;
+
     // Public Methods
     // =========================================================================
 

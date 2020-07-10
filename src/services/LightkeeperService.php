@@ -33,23 +33,8 @@ class LightkeeperService extends Component
     // Public Methods
     // =========================================================================
 
-    /**
-     * This function can literally be anything you want, and you can have as many service
-     * functions as you want
-     *
-     * From any other plugin file, call it like this:
-     *
-     *     Lightkeeper::$plugin->lightkeeperService->exampleService()
-     *
-     * @return mixed
-     */
-    public function exampleService()
+    public function logReport(Array $params)
     {
-        $result = 'something';
-        // Check our Plugin's settings for `someAttribute`
-        if (Lightkeeper::$plugin->getSettings()->someAttribute) {
-        }
-
-        return $result;
+        
     }
 }

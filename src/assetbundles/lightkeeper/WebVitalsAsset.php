@@ -32,7 +32,7 @@ use craft\web\assets\cp\CpAsset;
  * @package   Lightkeeper
  * @since     1.0.0
  */
-class LightkeeperAsset extends AssetBundle
+class WebVitalsAsset extends AssetBundle
 {
     // Public Methods
     // =========================================================================
@@ -45,11 +45,18 @@ class LightkeeperAsset extends AssetBundle
         // define the path that your publishable resources live
         $this->sourcePath = "@codewithkyle/lightkeeper/assetbundles/lightkeeper/dist";
 
-        $this->js = [
-            'js/lightkeeper.js',
+        // define the dependencies
+        $this->depends = [
+            CpAsset::class,
         ];
 
-        $this->jsOptions = ['type' => 'module'];
+        $this->js = [
+            'js/web-vitals.js',
+        ];
+
+        $this->css = [
+            'css/web-vitals.css',
+        ];
 
         parent::init();
     }
