@@ -34,12 +34,20 @@ class Settings extends Model
     // Public Properties
     // =========================================================================
 
-    /**
-     * Some field model attribute
-     *
-     * @var string
-     */
-    public $someAttribute = 'Some Default';
+    /** @var string */
+    public $developerEmail = '';
+
+    /** @var int */
+    public $minimumPerformance = '90';
+
+    /** @var int */
+    public $minimumAccessibility = '100';
+
+    /** @var int */
+    public $minimumBestPractices = '100';
+
+    /** @var int */
+    public $minimumSeo = '100';
 
     // Public Methods
     // =========================================================================
@@ -57,8 +65,11 @@ class Settings extends Model
     public function rules()
     {
         return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
+            [['minimumPerformance', 'minimumAccessibility', 'minimumBestPractices', 'minimumSeo'], 'required'],
+            ['developerEmail', 'string'],
+            [['minimumPerformance', 'minimumAccessibility', 'minimumBestPractices', 'minimumSeo'], 'number', 'integerOnly' => true],
+            [['minimumAccessibility', 'minimumBestPractices', 'minimumSeo'], 'default', 'value' => 100],
+            [['minimumPerformance'], 'default', 'value' => 90],
         ];
     }
 }

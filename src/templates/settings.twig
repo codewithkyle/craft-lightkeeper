@@ -17,10 +17,50 @@
 
 {% do view.registerAssetBundle("codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\LightkeeperAsset") %}
 
+<style>
+    .field{
+        margin-top: 0 !important;
+    }
+</style>
+
 {{ forms.textField({
-    label: 'Some Field',
-    instructions: 'Enter some setting here.',
-    id: 'someAttribute',
-    name: 'someAttribute',
-    value: settings['someAttribute']})
+        type: 'email',
+        label: 'Developer Email',
+        instructions: 'The email that will receive automated poor performance notifications.',
+        id: 'developerEmail',
+        name: 'developerEmail',
+    })
+}}
+
+{{ forms.textField({
+        type: 'number',
+        label: 'Minimum Performance',
+        id: 'minimumPerformance',
+        name: 'minimumPerformance',
+        min: "0",
+        max: "100",
+        value: settings.minimumPerformance,
+    })
+}}
+
+{{ forms.textField({
+        type: 'number',
+        label: 'Minimum Accessibility',
+        id: 'minimumAccessibility',
+        name: 'minimumAccessibility',
+        min: "0",
+        max: "100",
+        value: settings.minimumAccessibility,
+    })
+}}
+
+{{ forms.textField({
+        type: 'number',
+        label: 'Minimum Best Practices',
+        id: 'minimumBestPractices',
+        name: 'minimumBestPractices',
+        min: "0",
+        max: "100",
+        value: settings.minimumBestPractices,
+    })
 }}
