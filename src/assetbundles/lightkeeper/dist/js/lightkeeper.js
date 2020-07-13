@@ -7,28 +7,37 @@ let cls = null,
     fcp = null,
     ttfb = null;
 
+let storageQuota = null;
+async function getStorageQuota() {
+    const storage = await navigator.storage.estimate();
+    storageQuota = storage.quota;
+}
+if (navigator.storage && navigator.storage.estimate) {
+    getStorageQuota();
+}
+
 function sendToAnalytics(data) {
-    const body = JSON.stringify(data);
-    if (navigator.sendBeacon) {
-        navigator.sendBeacon("/actions/lightkeeper/default/report", body);
-    } else {
-        fetch("/actions/lightkeeper/default/report", { body, method: "POST", keepalive: true });
-    }
+    fetch("/lightkeeper/log-report", {
+        method: "POST", keepalive: true, body: JSON.stringify(data), headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    });
 }
 
 function checkValues() {
     if (cls && fid && lcp && fcp && ttfb) {
         const data = {
-            cls: cls,
-            fid: fid,
-            lcp: lcp,
-            fcp: fcp,
-            ttfb: ttfb,
+            cls: cls.value,
+            fid: fid.value,
+            lcp: lcp.value,
+            fcp: fcp.value,
+            ttfb: ttfb.value,
             connection: null,
             ram: null,
             cpu: null,
             screenWidth: window.innerWidth,
             screenHeight: window.innerHeight,
+            storage: storageQuota,
         };
         if ("connection" in navigator) {
             data.connection = window.navigator.connection.effectiveType;

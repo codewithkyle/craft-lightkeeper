@@ -56,12 +56,17 @@ class Install extends Migration
                     'cls' => $this->double()->notNull(),
                     'fid' => $this->double()->notNull(),
                     'lcp' => $this->double()->notNull(),
+                    'fcp' => $this->double()->notNull(),
+                    'ttfb' => $this->double()->notNull(),
+                    'os' => $this->string(255)->notNull(),
                     'browser' => $this->string(255)->notNull(),
-                    'screenSize' => $this->string(255)->notNull(),
-                    'threads' => $this->integer()->notNull(),
-                    'ram' => $this->integer()->notNull(),
-                    'connection' => $this->string(255)->notNull(),
-                    'storage' => $this->double()->notNull(),
+                    'browserVersion' => $this->string(255)->notNull(),
+                    'screenWidth' => $this->integer()->notNull(),
+                    'screenHeight' => $this->integer()->notNull(),
+                    'threads' => $this->integer(),
+                    'ram' => $this->integer(),
+                    'connection' => $this->string(255),
+                    'storage' => $this->double(),
                     'dateCreated' => $this->dateTime()->notNull(),
                     'dateUpdated' => $this->dateTime()->notNull(),
                     'uid' => $this->uid(),
@@ -77,11 +82,11 @@ class Install extends Migration
         $this->createIndex(
             $this->db->getIndexName(
                 '{{%web_vitals}}',
-                ['id', 'cls', 'fid', 'lcp', 'browser', 'screenSize', 'threads', 'ram', 'connection', 'storage'],
+                ['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'os', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'threads', 'ram', 'connection', 'storage'],
                 true,  
             ),
             '{{%web_vitals}}',
-            ['id', 'cls', 'fid', 'lcp', 'browser', 'screenSize', 'threads', 'ram', 'connection', 'storage', 'dateCreated', 'dateUpdated', 'uid'],
+            ['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'os', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'threads', 'ram', 'connection', 'storage', 'dateCreated', 'dateUpdated', 'uid'],
             true
         );
     }

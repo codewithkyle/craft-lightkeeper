@@ -21,6 +21,8 @@ use craft\events\RegisterCpNavItemsEvent;
 use craft\web\twig\variables\Cp;
 use craft\web\twig\variables\CraftVariable;
 use codewithkyle\lightkeeper\variables\LightkeeperVariable;
+use craft\web\UrlManager;
+use craft\events\RegisterUrlRulesEvent;
 
 use yii\base\Event;
 
@@ -95,6 +97,15 @@ class Lightkeeper extends Plugin
             {
                 $variable = $event->sender;
                 $variable->set('lightkeeper', LightkeeperVariable::class);
+            }
+        );
+
+        Event::on(
+            UrlManager::class,
+            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
+            function (RegisterUrlRulesEvent $event)
+            {
+                $event->rules['/lightkeeper/log-report'] = 'lightkeeper/default/report';
             }
         );
 

@@ -14,15 +14,10 @@ use codewithkyle\lightkeeper\Lightkeeper;
 
 use Craft;
 use craft\base\Component;
+use codewithkyle\lightkeeper\records\WebVitalReportRecord as Report;
 
 /**
  * LightkeeperService Service
- *
- * All of your plugin’s business logic should go in services, including saving data,
- * retrieving data, etc. They provide APIs that your controllers, template variables,
- * and other plugins can interact with.
- *
- * https://craftcms.com/docs/plugins/services
  *
  * @author    Kyle Andrews
  * @package   Lightkeeper
@@ -33,8 +28,32 @@ class LightkeeperService extends Component
     // Public Methods
     // =========================================================================
 
-    public function logReport(Array $params)
+    public function logReport($params)
     {
-        
+        $report = new Report();
+        $report->setIsNewRecord(true);
+
+        // General info
+        $report->connection = $params['connection'];
+        $report->ram = $params['ram'];
+        $report->threads = $params['cpu'];
+        $report->screenWidth = $params['screenWidth'];
+        $report->screenHeight = $params['screenHeight'];
+        $report->browser = $params['browser'];
+        $report->browserVersion = $params['browserVersion'];
+        $report->os = $params['os'];
+        $report->storage = $params['storage'];
+
+        // Audits
+        $report->cls = $params['cls'];
+        $report->fid = $params['fid'];
+        $report->fcp = $params['fcp'];
+        $report->ttfb = $params['ttfb'];
+        $report->lcp = $params['lcp'];
+
+        if ($report->validate())
+        {
+            $report->save();
+        }
     }
 }

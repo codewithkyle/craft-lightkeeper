@@ -41,13 +41,28 @@ class WebVitalReportModel extends Model
     public $fid;
 
     /** @var float */
+    public $fcp;
+
+    /** @var float */
+    public $ttfb;
+
+    /** @var float */
     public $lcp;
 
     /** @var string */
     public $browser;
 
     /** @var string */
-    public $screenSize;
+    public $browserVersion;
+
+    /** @var string */
+    public $os;
+
+    /** @var int */
+    public $screenWidth;
+
+    /** @var int */
+    public $screenHeight;
 
     /** @var int */
     public $threads;

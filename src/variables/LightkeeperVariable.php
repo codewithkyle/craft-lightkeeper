@@ -16,7 +16,7 @@ use Craft;
 
 class LightkeeperVariable
 {
-    public function loadWebVitals()
+    public function load()
     {
         $view = Craft::$app->getView();
         $view->registerAssetBundle('codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\LightkeeperAsset');

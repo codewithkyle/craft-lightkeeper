@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2020 Kyle Andrews
  */
 
-namespace codewithkyle\lightkeeper\variables;
+namespace codewithkyle\lightkeeper\controllers;
 
 use codewithkyle\lightkeeper\Lightkeeper;
 
@@ -21,6 +21,8 @@ class DefaultController extends Controller
     protected $allowAnonymous = [
         'report'
     ];
+
+    public $enableCsrfValidation = false;
 
     public function actionReport()
     {
