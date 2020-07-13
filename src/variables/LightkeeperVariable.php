@@ -21,4 +21,9 @@ class LightkeeperVariable
         $view = Craft::$app->getView();
         $view->registerAssetBundle('codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\LightkeeperAsset');
     }
+
+    public function getReports()
+    {
+        return Lightkeeper::getInstance()->lightkeeperService->getReports();
+    }
 }

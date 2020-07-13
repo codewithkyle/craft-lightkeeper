@@ -1,1 +1,54 @@
+lightkeeper-report{
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    padding: 0 16px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+lightkeeper-report:hover,
+lightkeeper-report:focus{
+    background-color: #f3f7fc;
+}
+lightkeeper-report.is-open secondary-data{
+    height: 36px;
+}
+lightkeeper-report.is-open{
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(205, 216, 228, 0.25), 0 2px 12px rgba(205, 216, 228, 0.5);
+}
 
+primary-data{
+    height: 52px;
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    box-sizing: border-box;
+}
+primary-data div{
+    display: inline-block;
+    width: 16.66%;
+}
+primary-data span{
+    font-weight: bold;
+}
+
+secondary-data{
+    display: flex;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    flex-flow: row nowrap;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+secondary-data div{
+    width: 16.66%;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+secondary-data span{
+    font-weight: bold;
+}

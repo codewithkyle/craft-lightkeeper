@@ -56,4 +56,13 @@ class LightkeeperService extends Component
             $report->save();
         }
     }
+
+    public function getReports()
+    {
+        $reports = Report::find()
+                    ->limit(50)
+                    ->orderBy(['dateCreated' => SORT_DESC])
+                    ->all();
+        return $reports;
+    }
 }

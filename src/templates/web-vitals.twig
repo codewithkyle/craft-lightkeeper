@@ -2,6 +2,63 @@
 {% set title = "Performance Audits" %}
 {% do view.registerAssetBundle("codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\WebVitalsAsset") %}
 
+{% set reports = craft.lightkeeper.getReports() %}
+
 {% block content %}
-    TODO: render web vitals data table
+    {% for report in reports %}
+        <lightkeeper-report>
+            <primary-data>
+                <div>
+                    <span>CLS:</span>
+                    {{ report.cls|round(3) }}
+                </div>
+                <div>
+                    <span>FCP:</span>
+                    {{ report.fcp|round(2) }}
+                </div>
+                <div>
+                    <span>LCP:</span>
+                    {{ report.lcp|round(2) }}
+                </div>
+                <div>
+                    <span>FID:</span>
+                    {{ report.fid|round(2) }}
+                </div>
+                <div>
+                    <span>TTFB:</span>
+                    {{ report.ttfb|round(2) }}
+                </div>
+                <div>
+                    <span>Logged:</span>
+                    {{ report.dateCreated|date('m/d/Y g:ia') }}
+                </div>
+            </primary-data>
+            <secondary-data>
+                <div>
+                    <span>Browser:</span>
+                    {{ report.browser|capitalize }} v{{ report.browserVersion }}
+                </div>
+                <div>
+                    <span>OS:</span>
+                    {{ report.os }}
+                </div>
+                <div>
+                    <span>Screen:</span>
+                    {{ report.screenWidth }}x{{ report.screenHeight }}
+                </div>
+                <div>
+                    <span>Threads:</span>
+                    {{ report.threads ?? "unknown" }}
+                </div>
+                <div>
+                    <span>RAM:</span>
+                    {{ report.ram ?? "unknown" }}
+                </div>
+                <div>
+                    <span>Connection:</span>
+                    {{ report.connection ?? "unknown" }}
+                </div>
+            </secondary-data>
+        </lightkeeper-report>
+    {% endfor %}
 {% endblock %}
