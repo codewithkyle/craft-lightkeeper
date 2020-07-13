@@ -12,6 +12,7 @@
         instructions: 'The email that will receive automated poor performance notifications.',
         id: 'developerEmail',
         name: 'developerEmail',
+        value: settings.developerEmail
     })
 }}
 
@@ -47,3 +48,76 @@
         value: settings.minimumBestPractices,
     })
 }}
+
+{{ forms.lightswitchField({
+        label: 'Enable Advanced Settings',
+        instructions: 'Enable and save to view the advanced configuration settings.',
+        id: 'advancedSettings',
+        name: 'advancedSettings',
+        on: settings.advancedSettings,
+    })
+}}
+
+{% if settings.advancedSettings %}
+    <div style="margin:24px 0;">
+        <p style="line-height:1.618;"><span style="font-weight:bold;color:red;">Warning:</span> The default values have been taken directly from Google based on the values used to optimize webpages for Google Search. We suggest you do not modify them if your website needs to recieve traffic from Google Search.</p>
+    </div>
+    
+    {{ forms.textField({
+            type: 'number',
+            label: 'Cumulative Layout Shift Threshold',
+            instructions: "The maximum amount of time (in milliseconds) the page is allowed to shift the layout.",
+            id: 'clsThreshold',
+            name: 'clsThreshold',
+            min: "0.001",
+            max: "100",
+            step: "0.001",
+            value: settings.clsThreshold,
+        })
+    }}
+
+    {{ forms.textField({
+            type: 'number',
+            label: 'First Contentful Paint Threshold',
+            instructions: "The maximum amount of time (in milliseconds) the page is allowed to wait for the first contentful paint.",
+            id: 'fcpThreshold',
+            name: 'fcpThreshold',
+            min: "0",
+            value: settings.fcpThreshold,
+        })
+    }}
+
+    {{ forms.textField({
+            type: 'number',
+            label: 'Largest Contentful Paint Threshold',
+            instructions: "The maximum amount of time (in milliseconds) the page is allowed to wait for the largest contentful paint.",
+            id: 'lcpThreshold',
+            name: 'lcpThreshold',
+            min: "0",
+            value: settings.lcpThreshold,
+        })
+    }}
+
+    {{ forms.textField({
+            type: 'number',
+            label: 'First Input Delay Threshold',
+            instructions: "The maximum amount of delay (in milliseconds) the page is allowed to wait before the first input.",
+            id: 'fidThreshold',
+            name: 'fidThreshold',
+            min: "0",
+            value: settings.fidThreshold,
+        })
+    }}
+
+    {{ forms.textField({
+            type: 'number',
+            label: 'Time to First Byte Threshold',
+            instructions: "The maximum amount of time (in milliseconds) the page is allowed to wait before the first byte is received.",
+            id: 'ttfbThreshold',
+            name: 'ttfbThreshold',
+            min: "0",
+            value: settings.ttfbThreshold,
+        })
+    }}
+
+{% endif %}

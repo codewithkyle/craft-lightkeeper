@@ -35,7 +35,7 @@ class Settings extends Model
     // =========================================================================
 
     /** @var string */
-    public $developerEmail = '';
+    public $developerEmail = null;
 
     /** @var int */
     public $minimumPerformance = '90';
@@ -64,6 +64,9 @@ class Settings extends Model
     /** @var int */
     public $ttfbThreshold = 600;
 
+    /** @var bool */
+    public $advancedSettings = false;
+
     // Public Methods
     // =========================================================================
 
@@ -80,11 +83,24 @@ class Settings extends Model
     public function rules()
     {
         return [
-            [['minimumPerformance', 'minimumAccessibility', 'minimumBestPractices', 'minimumSeo'], 'required'],
-            ['developerEmail', 'string'],
-            [['minimumPerformance', 'minimumAccessibility', 'minimumBestPractices', 'minimumSeo'], 'number', 'integerOnly' => true],
+            [['minimumPerformance', 'minimumAccessibility', 'minimumBestPractices', 'minimumSeo', 'lcpThreshold', 'fidThreshold', 'clsThreshold', 'fcpThreshold', 'ttfbThreshold'], 'required'],
+            [['minimumPerformance', 'minimumAccessibility', 'minimumBestPractices', 'minimumSeo', 'lcpThreshold', 'fidThreshold', 'fcpThreshold', 'ttfbThreshold', 'advancedSettings'], 'number', 'integerOnly' => true],
+            
+            [['clsThreshold'], 'number'],
+            [['clsThreshold'], 'default', 'value' => 0.1],
+            [['lcpThreshold'], 'default', 'value' => 2500],
+            [['fidThreshold'], 'default', 'value' => 100],
+            [['fcpThreshold'], 'default', 'value' => 2000],
+            [['ttfbThreshold'], 'default', 'value' => 600],
+
             [['minimumAccessibility', 'minimumBestPractices', 'minimumSeo'], 'default', 'value' => 100],
             [['minimumPerformance'], 'default', 'value' => 90],
+
+            [['advancedSettings'], 'boolean'],
+            [['advancedSettings'], 'default', 'value' => false],
+
+            [['developerEmail'], 'email'],
+            [['developerEmail'], 'default', 'value' => null],
         ];
     }
 }
