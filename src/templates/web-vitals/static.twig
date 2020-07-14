@@ -2,81 +2,85 @@
 {% do view.registerAssetBundle("codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\WebVitalsAsset") %}
 {% spaceless %}
     {% block content %}
-        {% for report in reports %}
-            {% if loop.index != 26 %}
-                <lightkeeper-report data-id="{{ report.id }}" tabindex="0" aria-label="toggle report">
-                    <primary-data>
-                        <div>
-                            <i state="{{ craft.lightkeeper.checkCLS(report.cls) }}"></i>
-                            <span class="bold">CLS:</span>
-                            <span>{{ report.cls }}</span>
-                        </div>
-                        <div>
-                            <i state="{{ craft.lightkeeper.checkFCP(report.fcp) }}"></i>
-                            <span class="bold">FCP:</span>
-                            <span>{{ report.fcp }}</span>
-                        </div>
-                        <div>
-                            <i state="{{ craft.lightkeeper.checkLCP(report.lcp) }}"></i>
-                            <span class="bold">LCP:</span>
-                            <span>{{ report.lcp }}</span>
-                        </div>
-                        <div>
-                            <i state="{{ craft.lightkeeper.checkFID(report.fid) }}"></i>
-                            <span class="bold">FID:</span>
-                            <span>{{ report.fid }}</span>
-                        </div>
-                        <div>
-                            <i state="{{ craft.lightkeeper.checkTTFB(report.ttfb) }}"></i>
-                            <span class="bold">TTFB:</span>
-                            <span>{{ report.ttfb }}</span>
-                        </div>
-                        <div>
-                            <span class="bold">Logged:</span>
-                            <span>{{ report.dateCreated }}</span>
-                        </div>
-                    </primary-data>
-                    <secondary-data>
-                        <div>
-                            <span class="bold">Browser:</span>
-                            <span>{{ report.browser }}</span>
-                        </div>
-                        <div>
-                            <span class="bold">OS:</span>
-                            <span>{{ report.os }}</span>
-                        </div>
-                        <div>
-                            <span class="bold">Screen:</span>
-                            <span>{{ report.screen }}</span>
-                        </div>
-                        <div>
-                            <span class="bold">Threads:</span>
-                            <span>{{ report.threads }}</span>
-                        </div>
-                        <div>
-                            <span class="bold">RAM:</span>
-                            <span>{{ report.ram }}</span>
-                        </div>
-                        <div>
-                            <span class="bold">Connection:</span>
-                            <span>{{ report.connection }}</span>
-                        </div>
-                        <div>
-                            <span class="bold">Storage:</span>
-                            <span>{{ report.storage }}</span>
-                        </div>
-                        <div>
-                            <span class="bold">IP:</span>
-                            <span>{{ report.ip }}</span>
-                        </div>
-                        <div>
-                            <span class="bold">URL:</span>
-                            <span>{{ report.url }}</span>
-                        </div>
-                    </secondary-data>
-                </lightkeeper-report>
-            {% endif %}
-        {% endfor %}
+        {% if reports|length %}
+            {% for report in reports %}
+                {% if loop.index != 26 %}
+                    <lightkeeper-report data-id="{{ report.id }}" tabindex="0" aria-label="toggle report">
+                        <primary-data>
+                            <div>
+                                <i state="{{ craft.lightkeeper.checkCLS(report.cls) }}"></i>
+                                <span class="bold">CLS:</span>
+                                <span>{{ report.cls }}</span>
+                            </div>
+                            <div>
+                                <i state="{{ craft.lightkeeper.checkFCP(report.fcp) }}"></i>
+                                <span class="bold">FCP:</span>
+                                <span>{{ report.fcp }}</span>
+                            </div>
+                            <div>
+                                <i state="{{ craft.lightkeeper.checkLCP(report.lcp) }}"></i>
+                                <span class="bold">LCP:</span>
+                                <span>{{ report.lcp }}</span>
+                            </div>
+                            <div>
+                                <i state="{{ craft.lightkeeper.checkFID(report.fid) }}"></i>
+                                <span class="bold">FID:</span>
+                                <span>{{ report.fid }}</span>
+                            </div>
+                            <div>
+                                <i state="{{ craft.lightkeeper.checkTTFB(report.ttfb) }}"></i>
+                                <span class="bold">TTFB:</span>
+                                <span>{{ report.ttfb }}</span>
+                            </div>
+                            <div>
+                                <span class="bold">Logged:</span>
+                                <span>{{ report.dateCreated }}</span>
+                            </div>
+                        </primary-data>
+                        <secondary-data>
+                            <div>
+                                <span class="bold">Browser:</span>
+                                <span>{{ report.browser }}</span>
+                            </div>
+                            <div>
+                                <span class="bold">OS:</span>
+                                <span>{{ report.os }}</span>
+                            </div>
+                            <div>
+                                <span class="bold">Screen:</span>
+                                <span>{{ report.screen }}</span>
+                            </div>
+                            <div>
+                                <span class="bold">Threads:</span>
+                                <span>{{ report.threads }}</span>
+                            </div>
+                            <div>
+                                <span class="bold">RAM:</span>
+                                <span>{{ report.ram }}</span>
+                            </div>
+                            <div>
+                                <span class="bold">Connection:</span>
+                                <span>{{ report.connection }}</span>
+                            </div>
+                            <div>
+                                <span class="bold">Storage:</span>
+                                <span>{{ report.storage }}</span>
+                            </div>
+                            <div>
+                                <span class="bold">IP:</span>
+                                <span>{{ report.ip }}</span>
+                            </div>
+                            <div>
+                                <span class="bold">URL:</span>
+                                <span>{{ report.url }}</span>
+                            </div>
+                        </secondary-data>
+                    </lightkeeper-report>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p style="display: block;width: 100%;text-align: center;">{{ "The performance audits will be reported here. View the front-end of your website to begin reporting data."|t }}</p>
+        {% endif %}
         {% if reports|length == 26 %}
             <button class="btn load-button js-load-lightkeeper-reports">{{ "Load Reports"|t }}</button>
         {% endif %}
