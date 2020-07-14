@@ -11,12 +11,12 @@ This plugin requires Craft CMS 3.4.0 or later.
 * Lighthouse Testing
     * Allow developers to choose what sections/categories/singles are tracked & logged
     * API key (optional)
-    * ✔️ Minimum scores before developers are notified
-        * ✔️ Perfromance
-        * ✔️ Accessability
-        * ✔️ Best Practices
+    * Minimum scores before developers are notified ✔️
+        * Perfromance ✔️
+        * Accessability ✔️
+        * Best Practices ✔️
     * Send email on poor performance
-    * ✔️ Developer email address
+    * Developer email address ✔️
     * Side panel component
         * Manual test button
         * Accessability test (0/100)
@@ -26,15 +26,15 @@ This plugin requires Craft CMS 3.4.0 or later.
     * Caching
         * Response cache
         * Ability to clear response cache
-* ✔️ Perfromance Aduiting
-    * ✔️ Add Web Vitals library injection variable
-    * ✔️ Log Web Vitals in section labeled Performance
-        * ✔️ Largest Contentful Paint
-        * ✔️ First Input Delay
-        * ✔️ Cumulative Layout Shift
-        * ✔️ Users connection type
-        * ✔️ RAM
-        * ✔️ CPU
-        * ✔️ Browser
-        * ✔️ Window size
-        * ✔️ Available storage
+* Perfromance Aduiting ✔️
+    * Add Web Vitals library injection variable ✔️
+    * Log Web Vitals in section labeled Performance ✔️
+        * Largest Contentful Paint ✔️
+        * First Input Delay ✔️
+        * Cumulative Layout Shift ✔️
+        * Users connection type ✔️
+        * RAM ✔️
+        * CPU ✔️
+        * Browser ✔️
+        * Window size ✔️
+        * Available storage ✔️
