@@ -25,8 +25,8 @@ class WebVitalReportRecord extends ActiveRecord
     public function rules()
     {
         return [
-            [['cls', 'fid', 'fcp', 'ttfb', 'lcp', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'os'], 'required'],
-            [['browser', 'browserVersion', 'connection', 'os'], 'string'],
+            [['cls', 'fid', 'fcp', 'ttfb', 'lcp', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'os', 'ip', 'url'], 'required'],
+            [['browser', 'browserVersion', 'connection', 'os', 'ip', 'url'], 'string'],
             [['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'threads', 'ram', 'storage', 'screenWidth', 'screenHeight'], 'number'],
         ];
     }

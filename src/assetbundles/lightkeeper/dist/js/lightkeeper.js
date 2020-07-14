@@ -38,6 +38,7 @@ function checkValues() {
             screenWidth: window.innerWidth,
             screenHeight: window.innerHeight,
             storage: storageQuota,
+            url: location.href,
         };
         if ("connection" in navigator) {
             data.connection = window.navigator.connection.effectiveType;

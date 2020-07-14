@@ -28,7 +28,7 @@ class LightkeeperService extends Component
     // Public Methods
     // =========================================================================
 
-    public function logReport($params)
+    public function logReport(Array $params, String $ip)
     {
         $report = new Report();
         $report->setIsNewRecord(true);
@@ -43,6 +43,8 @@ class LightkeeperService extends Component
         $report->browserVersion = $params['browserVersion'];
         $report->os = $params['os'];
         $report->storage = $params['storage'];
+        $report->url = $params['url'];
+        $report->ip = $ip;
 
         // Audits
         $report->cls = $params['cls'];

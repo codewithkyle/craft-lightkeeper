@@ -67,6 +67,8 @@ class Install extends Migration
                     'ram' => $this->integer(),
                     'connection' => $this->string(255),
                     'storage' => $this->double(),
+                    'ip' => $this->string(255)->notNull(),
+                    'url' => $this->string(255)->notNull(),
                     'dateCreated' => $this->dateTime()->notNull(),
                     'dateUpdated' => $this->dateTime()->notNull(),
                     'uid' => $this->uid(),
@@ -82,11 +84,11 @@ class Install extends Migration
         $this->createIndex(
             $this->db->getIndexName(
                 '{{%web_vitals}}',
-                ['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'os', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'threads', 'ram', 'connection', 'storage'],
+                ['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'os', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'threads', 'ram', 'connection', 'storage', 'ip', 'url'],
                 true,  
             ),
             '{{%web_vitals}}',
-            ['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'os', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'threads', 'ram', 'connection', 'storage', 'dateCreated', 'dateUpdated', 'uid'],
+            ['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'os', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'threads', 'ram', 'connection', 'storage', 'ip', 'url', 'dateCreated', 'dateUpdated', 'uid'],
             true
         );
     }

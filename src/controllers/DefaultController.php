@@ -28,6 +28,6 @@ class DefaultController extends Controller
     {
         $this->requirePostRequest();
         $request = Craft::$app->getRequest();
-        Lightkeeper::getInstance()->lightkeeperService->logReport($request->getBodyParams());
+        Lightkeeper::getInstance()->lightkeeperService->logReport($request->getBodyParams(), $request->userIP);
     }
 }

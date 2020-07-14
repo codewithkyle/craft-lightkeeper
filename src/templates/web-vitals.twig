@@ -6,7 +6,7 @@
 
 {% block content %}
     {% for report in reports %}
-        <lightkeeper-report>
+        <lightkeeper-report tabindex="0">
             <primary-data>
                 <div>
                     <span>CLS:</span>
@@ -57,6 +57,18 @@
                 <div>
                     <span>Connection:</span>
                     {{ report.connection ?? "unknown" }}
+                </div>
+                <div>
+                    <span>Storage:</span>
+                    {{ report.storage ?? "unknown" }}
+                </div>
+                <div>
+                    <span>IP:</span>
+                    {{ report.ip }}
+                </div>
+                <div>
+                    <span>URL:</span>
+                    {{ report.url }}
                 </div>
             </secondary-data>
         </lightkeeper-report>

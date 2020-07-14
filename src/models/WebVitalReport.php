@@ -76,6 +76,12 @@ class WebVitalReportModel extends Model
     /** @var float */
     public $storage;
 
+    /** @var string */
+    public $ip;
+
+    /** @var string */
+    public $url;
+
     /**
      * @return array
      */
