@@ -106,6 +106,7 @@ class Lightkeeper extends Plugin
             function (RegisterUrlRulesEvent $event)
             {
                 $event->rules['/lightkeeper/log-report'] = 'lightkeeper/default/report';
+                $event->rules['/lightkeeper/reports.json'] = 'lightkeeper/default/get-reports';
             }
         );
 

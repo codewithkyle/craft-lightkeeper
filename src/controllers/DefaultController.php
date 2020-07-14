@@ -30,4 +30,14 @@ class DefaultController extends Controller
         $request = Craft::$app->getRequest();
         Lightkeeper::getInstance()->lightkeeperService->logReport($request->getBodyParams(), $request->userIP);
     }
+
+    public function actionGetReports()
+    {
+        $this->requireAcceptsJson();
+        $this->requirePermission('accessCp');
+        $request = Craft::$app->getRequest();
+        $page = $request->getParam('offset');
+        $ret = Lightkeeper::getInstance()->lightkeeperService->getReports($page);
+        return json_encode($ret);
+    }
 }

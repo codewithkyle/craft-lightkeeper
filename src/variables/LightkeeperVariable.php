@@ -22,8 +22,93 @@ class LightkeeperVariable
         $view->registerAssetBundle('codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\LightkeeperAsset');
     }
 
-    public function getReports()
+    public function getReports($page = 0)
     {
-        return Lightkeeper::getInstance()->lightkeeperService->getReports();
+        return Lightkeeper::getInstance()->lightkeeperService->getReports($page);
+    }
+
+    public function checkCLS(float $value)
+    {
+        $threshold = Lightkeeper::getInstance()->getSettings()->clsThreshold;
+        if ($value <= $threshold)
+        {
+            return 'pass';
+        }
+        else if ($value > $threshold && $value <= $threshold * 2)
+        {
+            return 'warn';
+        }
+        else
+        {
+            return 'fail';
+        }
+    }
+
+    public function checkFCP(float $value)
+    {
+        $threshold = Lightkeeper::getInstance()->getSettings()->fcpThreshold;
+        if ($value <= $threshold)
+        {
+            return 'pass';
+        }
+        else if ($value > $threshold && $value <= $threshold * 2)
+        {
+            return 'warn';
+        }
+        else
+        {
+            return 'fail';
+        }
+    }
+
+    public function checkLCP(float $value)
+    {
+        $threshold = Lightkeeper::getInstance()->getSettings()->lcpThreshold;
+        if ($value <= $threshold)
+        {
+            return 'pass';
+        }
+        else if ($value > $threshold && $value <= $threshold * 2)
+        {
+            return 'warn';
+        }
+        else
+        {
+            return 'fail';
+        }
+    }
+
+    public function checkFID(float $value)
+    {
+        $threshold = Lightkeeper::getInstance()->getSettings()->fidThreshold;
+        if ($value <= $threshold)
+        {
+            return 'pass';
+        }
+        else if ($value > $threshold && $value <= $threshold * 2)
+        {
+            return 'warn';
+        }
+        else
+        {
+            return 'fail';
+        }
+    }
+
+    public function checkTTFB(float $value)
+    {
+        $threshold = Lightkeeper::getInstance()->getSettings()->ttfbThreshold;
+        if ($value <= $threshold)
+        {
+            return 'pass';
+        }
+        else if ($value > $threshold && $value <= $threshold * 2)
+        {
+            return 'warn';
+        }
+        else
+        {
+            return 'fail';
+        }
     }
 }

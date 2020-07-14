@@ -59,12 +59,36 @@ class LightkeeperService extends Component
         }
     }
 
-    public function getReports()
+    public function getReports($page = 0)
     {
-        $reports = Report::find()
-                    ->limit(50)
-                    ->orderBy(['dateCreated' => SORT_DESC])
-                    ->all();
+        $offset = 25 * $page;
+        $rows = Report::find()
+                        ->offset($offset)
+                        ->limit(26)
+                        ->orderBy(['dateCreated' => SORT_DESC])
+                        ->all();
+        $reports = array();
+        $helper = new \craft\helpers\DateTimeHelper();
+        foreach ($rows as $report){
+            $reports[] = [
+                'id' => $report->id,
+                'cls' => round($report->cls, 3),
+                'fcp' => round($report->fcp, 2),
+                'lcp' => round($report->lcp, 2),
+                'fid' => round($report->fid, 2),
+                'ttfb' => round($report->ttfb, 2),
+                'dateCreated' => date_format($helper->toDateTime($report->dateCreated), 'm/d/Y g:ia'),
+                'browser' => $report->browser . ' v' . $report->browserVersion,
+                'os' => $report->os,
+                'screen' => $report->screenWidth . 'x' . $report->screenHeight,
+                'threads' => $report->threads ?? 'unknown',
+                'ram' => $report->ram ?? 'unknown',
+                'connection' => $report->connection ?? 'unknown',
+                'storage' => $report->storage ?? 'unknown',
+                'ip' => $report->ip,
+                'url' => $report->url,
+            ];
+        }
         return $reports;
     }
 }

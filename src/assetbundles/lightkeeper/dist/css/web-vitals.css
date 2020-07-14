@@ -34,13 +34,30 @@ primary-data{
     align-items: center;
     flex-flow: row nowrap;
     box-sizing: border-box;
+    font-size: 0;
 }
 primary-data div{
     display: inline-block;
     width: 16.66%;
 }
-primary-data span{
+primary-data span.bold{
     font-weight: bold;
+}
+primary-data i{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    display: inline-block;
+}
+i[state="pass"]{
+    background-color: #48BB78;
+}
+i[state="warn"]{
+    background-color: #ECC94B;
+}
+i[state="fail"]{
+    background-color: #F56565;
 }
 
 secondary-data{
@@ -50,6 +67,7 @@ secondary-data{
     overflow: hidden;
     flex-flow: row wrap;
     box-sizing: border-box;
+    font-size: 0;
 }
 secondary-data div{
     height: 42px;
@@ -63,6 +81,19 @@ secondary-data div{
 secondary-data div:last-child{
     width: calc(16.66% * 4);
 }
-secondary-data span{
+secondary-data span.bold{
     font-weight: bold;
+    display: inline-block;
+}
+
+secondary-data span,
+primary-data span{
+    display: inline-block;
+    margin: 0 2px;
+    font-size: 14px;
+}
+
+.load-button{
+    display: block;
+    margin: 24px auto 0;
 }
