@@ -15,6 +15,9 @@ use codewithkyle\lightkeeper\Lightkeeper;
 use Craft;
 use craft\base\Component;
 use codewithkyle\lightkeeper\records\WebVitalReportRecord as Report;
+use craft\helpers\UrlHelper;
+use craft\elements\Entry;
+use craft\elements\Category;
 
 /**
  * LightkeeperService Service
@@ -90,5 +93,28 @@ class LightkeeperService extends Component
             ];
         }
         return $reports;
+    }
+
+    public function renderEntryTemplate($entryContext)
+    {
+        $entry = Entry::find()->id($entryContext->id)->one();
+        $ret = null;
+        if (isset($entry->url)){
+            $ret = Craft::$app->getView()->renderTemplate('lightkeeper/lightkeeper.twig', [
+                'url' => $entry->url,
+            ]);
+        }
+        return $ret;
+    }
+    public function renderCategoryTemplate($categoryContext)
+    {
+        $category = Category::find()->id($categoryContext->id)->one();
+        $ret = null;
+        if (isset($category->url)){
+            $ret = Craft::$app->getView()->renderTemplate('lightkeeper/lightkeeper.twig', [
+                'url' => $category->url,
+            ]);
+        }
+        return $ret;
     }
 }

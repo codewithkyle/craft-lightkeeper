@@ -1,0 +1,178 @@
+.lightkeeper-widget{
+    display: block;
+    width: 100%;
+    background-color: #f3f7fc;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px rgba(205, 216, 228, 0.25), 0 2px 12px rgba(205, 216, 228, 0.5);
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.lightkeeper-widget[state="loading"] .audit,
+.lightkeeper-widget[state="error"] .audit,
+.lightkeeper-widget[state="empty"] .audit{
+    display: none;
+}
+.lightkeeper-widget[state="error"] .lightkeeper-loading,
+.lightkeeper-widget[state="idling"] .lightkeeper-loading,
+.lightkeeper-widget[state="empty"] .lightkeeper-loading{
+    display: none;
+}
+.lightkeeper-widget[state="idling"] .lightkeeper-error,
+.lightkeeper-widget[state="loading"] .lightkeeper-error,
+.lightkeeper-widget[state="empty"] .lightkeeper-error{
+    display: none;
+}
+
+.lightkeeper-widget[state="idling"] .lightkeeper-empty,
+.lightkeeper-widget[state="loading"] .lightkeeper-empty,
+.lightkeeper-widget[state="error"] .lightkeeper-empty{
+    display: none;
+}
+
+.lightkeeper-header{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.lightkeeper-header span{
+    color: #515f6c;
+    font-size: 14px;
+}
+.lightkeeper-header button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+.lightkeeper-header button svg{
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+}
+
+.audit{
+    display: block;
+    width: 100%;
+    margin: 32px 0;
+}
+.audit svg{
+    display: block;
+    width: 100%;
+}
+.audit svg path{
+    fill: none;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    stroke: rgba(96, 125, 159, 0.25);;
+}
+.audit svg path[level]{
+    stroke-dasharray: 251;
+    stroke-dashoffset: 251;
+}
+.audit svg path[level="pass"]{
+    stroke: #48BB78;
+}
+.audit svg path[level="warn"]{
+    stroke: #ECC94B;
+}
+.audit svg path[level="fail"]{
+    stroke: #F56565;
+}
+.audit .audit-container{
+    width: 128px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+}
+.audit .audit-number{
+    font-size: 48px;
+    line-height: 1;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-68%);
+    color: #3f4d5a;
+}
+.audit .audit-title{
+    color: #3f4d5a;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+}
+
+.lightkeeper-loading{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 48px 0 32px;
+}
+.lightkeeper-loading span{
+    display: block;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.lightkeeper-loading svg-circle-spinner{
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    text-align: center;
+}
+.lightkeeper-loading svg-circle-spinner svg {
+    height: 64px;
+    width: 64px;
+    animation: rotator 1400ms linear infinite;
+}
+svg-circle-spinner svg circle {
+    stroke-dasharray: 188;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: dash 1400ms ease-in-out infinite;
+    stroke: #E5422B;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    fill: none;
+}
+
+@keyframes rotator{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(270deg);
+    }
+}
+
+@keyframes dash{
+    0%{
+        stroke-dashoffset: 188;
+    }
+    50%{
+        stroke-dashoffset: 47;
+        transform:rotate(135deg);
+    }
+    100%{
+        stroke-dashoffset: 188;
+        transform:rotate(450deg);
+    }
+}
+
+.lightkeeper-error{
+    display: block;
+    text-align: center;
+    padding: 32px 0;
+    color: #F56565;
+}
+.lightkeeper-empty{
+    display: block;
+    text-align: center;
+    padding: 32px 0;
+}

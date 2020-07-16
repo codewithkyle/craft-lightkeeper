@@ -123,6 +123,18 @@ class Lightkeeper extends Plugin
             }
         );
 
+        Craft::$app->view->hook('cp.entries.edit.details', function (array &$context) {
+            /** @var EntryModel $entry **/
+            $entry = $context['entry'];
+            return Lightkeeper::getInstance()->lightkeeperService->renderEntryTemplate($entry);
+        });
+
+        Craft::$app->view->hook('cp.categories.edit.details', function (array &$context) {
+            /** @var CategoryModel $category **/
+            $category = $context['category'];
+            return Lightkeeper::getInstance()->lightkeeperService->renderEntryTemplate($category);
+        });
+
         Craft::info(
             Craft::t(
                 'lightkeeper',
