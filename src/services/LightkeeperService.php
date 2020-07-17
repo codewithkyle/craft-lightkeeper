@@ -180,6 +180,49 @@ class LightkeeperService extends Component
             $res['errors'] = $report->errors;
         }
 
+        // Email notification
+        $settings = Lightkeeper::getInstance()->getSettings();
+        if (isset($settings['developerEmail']))
+        {
+            $passedPerformance = true;
+            $passedAccessibility = true;
+            $passedBestPractices = true;
+            if ($params['performance'] * 100 < $settings['minimumPerformance'])
+            {
+                $passedPerformance = false;
+            }
+            if ($params['accessibility'] * 100 < $settings['minimumAccessibility'])
+            {
+                $passedAccessibility = false;
+            }
+            if ($params['bestPractices'] * 100 < $settings['minimumBestPractices'])
+            {
+                $passedBestPractices = false;
+            }
+
+            // Do we need to send an email?
+            if (!$passedAccessibility || !$passedBestPractices || !$passedPerformance)
+            {
+                $html = '
+                    The page <a href="' . $params['url'] . '" target="_blank">' . $params['url'] . '</a> has failed a Lighthouse audit:<br/>
+                    <strong>Performance:</strong> ' . $params['performance'] * 100 . '/' . $settings['minimumPerformance'] . '<br/>
+                    <strong>Accessibility:</strong> ' . $params['accessibility'] * 100 . '/' . $settings['minimumAccessibility'] . '<br/>
+                    <strong>Best Practices:</strong> ' . $params['bestPractices'] * 100 . '/' . $settings['minimumBestPractices'];
+                $this->sendMail($html, Craft::$app->getSystemName() . ' - Lighthouse Audit Failed', $settings['developerEmail']);
+            }
+        }
+
         return $res;
+    }
+
+    public function sendMail(string $html, string $subject, $mail): bool
+    {
+        return Craft::$app
+            ->getMailer()
+            ->compose()
+            ->setTo($mail)
+            ->setSubject($subject)
+            ->setHtmlBody($html)
+            ->send();
     }
 }

@@ -8,14 +8,18 @@ const   runTestButton = document.body.querySelector('.js-run-test'),
         seoLine = document.body.querySelector('.js-seo-line'),
         seoNumber = document.body.querySelector('.js-seo-number'),
         widget = document.body.querySelector('.js-lightkeeper-widget'),
-        maxOffset = 251;
+        maxOffset = 251,
+        pageUrl = widget.dataset.url;
 
 let reportId = widget.dataset.reportId,
     pageId = widget.dataset.pageId;
 
 async function reportAudit(data){
+
     data.reportId = reportId;
     data.pageId = pageId;
+    data.url = pageUrl;
+    
     const request = await fetch('/lightkeeper/log-audit', {
         method: 'POST',
         credentials: 'include',
