@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+## 1.0.0 - 2020-07-17
+
 ### Added
 
-- initial project setup & structure generated from the [Plugin Factory](https://pluginfactory.io/)
+- Lighthouse audit component
+- Minimum required Lighthouse score settings
+- Email notifications when poor performance is detected
+- Web Vitals library injection
+- Performance audit section

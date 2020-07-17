@@ -6,6 +6,10 @@ Lightkeeper integrates Google Lighthouse testing alongside continuous performanc
 
 This plugin requires Craft CMS 3.4.0 or later.
 
+## Usage
+
+Record web vitals by adding `{{ craft.lightkeeper.load() }}` to the documents HEAD within your base template file.
+
 ## Lightkeeper Roadmap
 
 * Lighthouse Testing ✔️
