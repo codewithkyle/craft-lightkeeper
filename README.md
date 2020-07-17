@@ -8,12 +8,12 @@ This plugin requires Craft CMS 3.4.0 or later.
 
 ## Lightkeeper Roadmap
 
-* Lighthouse Testing
+* Lighthouse Testing ✔️
     * Minimum scores before developers are notified ✔️
         * Perfromance ✔️
         * Accessability ✔️
         * Best Practices ✔️
-    * Send email on poor performance
+    * Send email on poor performance ✔️
     * Developer email address ✔️
     * Side panel component ✔️
         * Manual test button ✔️
