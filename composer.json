@@ -1,6 +1,6 @@
 {
     "name": "codewithkyle/lightkeeper",
-    "description": "Lightkeeper helps to integrate and automate Google Lighthouse testing.",
+    "description": "Lightkeeper integrates Google Lighthouse testing alongside continuous performance monitoring.",
     "type": "craft-plugin",
     "version": "1.0.0",
     "keywords": [
