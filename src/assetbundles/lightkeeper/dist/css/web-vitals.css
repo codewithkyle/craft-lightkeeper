@@ -11,11 +11,8 @@ lightkeeper-report:focus{
     background-color: #f3f7fc;
     outline: none;
 }
-lightkeeper-report.is-open primary-data{
-    height: 42px;
-}
 lightkeeper-report.is-open secondary-data{
-    height: calc(42px * 2);
+    height: auto
 }
 lightkeeper-report.is-open{
     background-color: #fff;
@@ -29,16 +26,17 @@ lightkeeper-report.is-open:not(:last-of-type){
 }
 
 primary-data{
-    height: 52px;
     display: flex;
     align-items: center;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     box-sizing: border-box;
     font-size: 0;
 }
 primary-data div{
     display: inline-block;
-    width: 16.66%;
+    width: 100%;
+    min-height: 42px;
+    line-height: 42px;
 }
 primary-data span.bold{
     font-weight: bold;
@@ -70,16 +68,16 @@ secondary-data{
     font-size: 0;
 }
 secondary-data div{
-    height: 42px;
+    min-height: 42px;
     line-height: 42px;
-    width: 16.66%;
+    width: 100%;
     display: inline-block;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 secondary-data div:last-child{
-    width: calc(16.66% * 4);
+    width: 100%;
 }
 secondary-data span.bold{
     font-weight: bold;
@@ -96,4 +94,36 @@ primary-data span{
 .load-button{
     display: block;
     margin: 24px auto 0;
+}
+
+@media (min-width: 520px){
+    primary-data div,
+    secondary-data div{
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px){
+    primary-data div,
+    secondary-data div{
+        width: 33%;
+    }
+}
+
+@media (min-width: 1024px){
+    primary-data div,
+    secondary-data div{
+        width: 25%;
+    }
+}
+
+@media (min-width: 1600px){
+    primary-data div,
+    secondary-data div{
+        width: 16.66%;
+    }
+
+    secondary-data div:last-child{
+        width: calc(16.66% * 4);
+    }
 }
