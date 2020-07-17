@@ -1,49 +1,59 @@
 {% do view.registerAssetBundle("codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\WidgetAsset") %}
 
-<div class="lightkeeper-widget js-lightkeeper-widget" state="empty">
+{% set report = craft.lightkeeper.getLighthouseReport(id) %}
+
+<div 
+    class="lightkeeper-widget js-lightkeeper-widget" 
+    state="{{ report ? 'idling' : 'empty' }}" 
+    data-url="{{ url }}" 
+    data-page-id="{{ id }}" 
+    {% if report %}
+        data-report-id="{{ report.id }}"
+    {% endif %}
+>
     <div class="lightkeeper-header">
         <span>{{ "Lighthouse Audit"|t }}</span>
-        <button class="btn js-run-test" data-url="http://example.com/" type="button">
+        <button class="btn js-run-test" type="button">
             <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6zM48 453.5v-395c0-4.6 5.1-7.5 9.1-5.2l334.2 197.5c3.9 2.3 3.9 8 0 10.3L57.1 458.7c-4 2.3-9.1-.6-9.1-5.2z"></path></svg>
             <span>Run test</span>
         </button>
     </div>
     <div class="audit">
         <div class="audit-container">
-            <span class="audit-number js-performance-number">0</span>
+            <span class="audit-number js-performance-number">{{ report and report.performance * 100 ?? 0 }}</span>
             <svg viewBox="0 0 120 96.5">
                 <path d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
-                <path level="neutral" class="js-performance-line" d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
+                <path level="neutral" data-value="{{ report.performance ?? 0 }}" class="js-performance-line" d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
             </svg>
             <span class="audit-title">Performance</span>
         </div>
     </div>
     <div class="audit">
         <div class="audit-container">
-            <span class="audit-number js-accessibility-number">0</span>
+            <span class="audit-number js-accessibility-number">{{ report and report.accessibility * 100 ?? 0 }}</span>
             <svg viewBox="0 0 120 96.5">
                 <path d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
-                <path level="neutral" class="js-accessibility-line" d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
+                <path level="neutral" data-value="{{ report.accessibility ?? 0 }}" class="js-accessibility-line" d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
             </svg>
             <span class="audit-title">Accessibility</span>
         </div>
     </div>
     <div class="audit">
         <div class="audit-container">
-            <span class="audit-number js-best-practices-number">0</span>
+            <span class="audit-number js-best-practices-number">{{ report and report.bestPractices * 100 ?? '0' }}</span>
             <svg viewBox="0 0 120 96.5">
                 <path d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
-                <path level="neutral" class="js-best-practices-line" d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
+                <path level="neutral" data-value="{{ report.bestPractices ?? 0 }}" class="js-best-practices-line" d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
             </svg>
             <span class="audit-title">Best Practices</span>
         </div>
     </div>
     <div class="audit">
         <div class="audit-container">
-            <span class="audit-number js-seo-number">0</span>
+            <span class="audit-number js-seo-number">{{ report and report.seo * 100 ?? '0' }}</span>
             <svg viewBox="0 0 120 96.5">
                 <path d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
-                <path level="neutral" class="js-seo-line" d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
+                <path level="neutral" data-value="{{ report.seo ?? 0 }}" class="js-seo-line" d="M13.9,93.5C7,84.1,3,72.5,3,60C3,28.5,28.5,3,60,3s57,25.5,57,57c0,12.5-4,24.1-10.9,33.5"/>
             </svg>
             <span class="audit-title">Seo</span>
         </div>

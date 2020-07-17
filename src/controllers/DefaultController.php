@@ -24,11 +24,11 @@ class DefaultController extends Controller
 
     public $enableCsrfValidation = false;
 
-    public function actionReport()
+    public function actionReportVitals()
     {
         $this->requirePostRequest();
         $request = Craft::$app->getRequest();
-        Lightkeeper::getInstance()->lightkeeperService->logReport($request->getBodyParams(), $request->userIP);
+        Lightkeeper::getInstance()->lightkeeperService->logWebVitalReport($request->getBodyParams(), $request->userIP);
     }
 
     public function actionGetReports()
@@ -37,7 +37,16 @@ class DefaultController extends Controller
         $this->requirePermission('accessCp');
         $request = Craft::$app->getRequest();
         $page = $request->getParam('offset');
-        $ret = Lightkeeper::getInstance()->lightkeeperService->getReports($page);
+        $ret = Lightkeeper::getInstance()->lightkeeperService->getWebVitalReports($page);
         return json_encode($ret);
+    }
+
+    public function actionReportAudit()
+    {
+        $this->requirePostRequest();
+        $this->requireAcceptsJson();
+        $request = Craft::$app->getRequest();
+        $response = Lightkeeper::getInstance()->lightkeeperService->logLighthouseReport($request->getBodyParams());
+        return json_encode($response);
     }
 }

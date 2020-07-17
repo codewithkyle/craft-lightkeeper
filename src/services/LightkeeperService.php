@@ -14,10 +14,11 @@ use codewithkyle\lightkeeper\Lightkeeper;
 
 use Craft;
 use craft\base\Component;
-use codewithkyle\lightkeeper\records\WebVitalReportRecord as Report;
+use codewithkyle\lightkeeper\records\WebVitalReportRecord as WebVitalReport;
 use craft\helpers\UrlHelper;
 use craft\elements\Entry;
 use craft\elements\Category;
+use codewithkyle\lightkeeper\records\LighthouseReportRecord as LighthouseReport;
 
 /**
  * LightkeeperService Service
@@ -31,9 +32,9 @@ class LightkeeperService extends Component
     // Public Methods
     // =========================================================================
 
-    public function logReport(Array $params, String $ip)
+    public function logWebVitalReport(Array $params, String $ip)
     {
-        $report = new Report();
+        $report = new WebVitalReport();
         $report->setIsNewRecord(true);
 
         // General info
@@ -62,10 +63,10 @@ class LightkeeperService extends Component
         }
     }
 
-    public function getReports($page = 0)
+    public function getWebVitalReports($page = 0)
     {
         $offset = 25 * $page;
-        $rows = Report::find()
+        $rows = WebVitalReport::find()
                         ->offset($offset)
                         ->limit(26)
                         ->orderBy(['dateCreated' => SORT_DESC])
@@ -102,6 +103,7 @@ class LightkeeperService extends Component
         if (isset($entry->url)){
             $ret = Craft::$app->getView()->renderTemplate('lightkeeper/lightkeeper.twig', [
                 'url' => $entry->url,
+                'id' => $entry->id,
             ]);
         }
         return $ret;
@@ -113,8 +115,71 @@ class LightkeeperService extends Component
         if (isset($category->url)){
             $ret = Craft::$app->getView()->renderTemplate('lightkeeper/lightkeeper.twig', [
                 'url' => $category->url,
+                'id' => $category->id,
             ]);
         }
         return $ret;
+    }
+
+    public function getLighthouseReport(int $pageId)
+    {
+        $report = LighthouseReport::find()
+                    ->where(['pageId' => $pageId])
+                    ->one();
+        return $report;
+    }
+
+    public function logLighthouseReport(Array $params)
+    {
+        $report = null;
+        $newRecord = false;
+        $res = [
+            'success' => true,
+            'errors' => null,
+        ];
+
+        if (isset($params['reportId']))
+        {
+            $report = LighthouseReport::find()->where(['id' => $params['reportId']])->one();
+            if (is_null($report))
+            {
+                $report = new LighthouseReport();
+                $report->setIsNewRecord(true);
+                $newRecord = true;
+            }
+            else
+            {
+                $report->setIsNewRecord(false);
+            }
+        }
+        else
+        {
+            $report = new LighthouseReport();
+            $report->setIsNewRecord(true);
+            $newRecord = true;
+        }
+
+        $report->pageId = $params['pageId'];
+        $report->performance = $params['performance'];
+        $report->accessibility = $params['accessibility'];
+        $report->bestPractices = $params['bestPractices'];
+        $report->seo = $params['seo'];
+
+        if ($report->validate())
+        {
+            $report->save();
+            if ($newRecord)
+            {
+                $newReport = LighthouseReport::find()->where(['pageId' => $params['pageId']])->one();
+                $res['reportId'] = $newReport->id;
+            }
+        }
+        else
+        {
+            $res['success'] = false;
+            $res['errors'] = $report->errors;
+        }
+
+        return $res;
     }
 }

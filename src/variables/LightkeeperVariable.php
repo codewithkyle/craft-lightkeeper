@@ -24,7 +24,7 @@ class LightkeeperVariable
 
     public function getReports($page = 0)
     {
-        return Lightkeeper::getInstance()->lightkeeperService->getReports($page);
+        return Lightkeeper::getInstance()->lightkeeperService->getWebVitalReports($page);
     }
 
     public function checkCLS(float $value)
@@ -110,5 +110,10 @@ class LightkeeperVariable
         {
             return 'fail';
         }
+    }
+
+    public function getLighthouseReport(int $pageId)
+    {
+        return Lightkeeper::getInstance()->lightkeeperService->getLighthouseReport($pageId);
     }
 }

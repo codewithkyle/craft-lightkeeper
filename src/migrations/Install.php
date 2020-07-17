@@ -18,12 +18,8 @@ use craft\db\Migration;
 
 class Install extends Migration
 {
-    /** @var string */
-    public $driver;
-
     public function safeUp()
     {
-        $this->driver = Craft::$app->getConfig()->getDb()->driver;
         if ($this->createTables())
         {
             $this->createIndexes();
@@ -35,20 +31,17 @@ class Install extends Migration
 
     public function safeDown()
     {
-        $this->driver = Craft::$app->getConfig()->getDb()->driver;
         $this->removeTables();
-
         return true;
     }
 
     protected function createTables()
     {
-        $tablesCreated = false;
+        $tablesCreated = true;
 
-        $tableSchema = Craft::$app->db->schema->getTableSchema('{{%web_vitals}}');
-        if ($tableSchema === null)
+        $vitalsTable = Craft::$app->db->schema->getTableSchema('{{%web_vitals}}');
+        if (is_null($vitalsTable))
         {
-            $tablesCreated = true;
             $this->createTable(
                 '{{%web_vitals}}',
                 [
@@ -74,9 +67,36 @@ class Install extends Migration
                     'uid' => $this->uid(),
                 ]
             );
-
-            return $tablesCreated;
         }
+        else
+        {
+            $tablesCreated = false;
+        }
+
+        $lighthouseTable = Craft::$app->db->schema->getTableSchema('{{%lighthouse_reports}}');
+        if (is_null($lighthouseTable))
+        {
+            $this->createTable(
+                '{{%lighthouse_reports}}',
+                [
+                    'id' => $this->primaryKey(),
+                    'pageId' => $this->integer()->notNull(),
+                    'performance' => $this->double()->notNull(),
+                    'accessibility' => $this->double()->notNull(),
+                    'bestPractices' => $this->double()->notNull(),
+                    'seo' => $this->double()->notNull(),
+                    'dateCreated' => $this->dateTime()->notNull(),
+                    'dateUpdated' => $this->dateTime()->notNull(),
+                    'uid' => $this->uid(),
+                ]
+            );
+        }
+        else
+        {
+            $tablesCreated = false;
+        }
+
+        return $tablesCreated;
     }
 
     protected function createIndexes()
@@ -96,5 +116,6 @@ class Install extends Migration
     protected function removeTables()
     {
         $this->dropTableIfExists('{{%web_vitals}}');
+        $this->dropTableIfExists('{{%lighthouse_reports}}');
     }
 }

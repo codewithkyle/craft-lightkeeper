@@ -105,8 +105,9 @@ class Lightkeeper extends Plugin
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
             function (RegisterUrlRulesEvent $event)
             {
-                $event->rules['/lightkeeper/log-report'] = 'lightkeeper/default/report';
+                $event->rules['/lightkeeper/log-report'] = 'lightkeeper/default/report-vitals';
                 $event->rules['/lightkeeper/reports.json'] = 'lightkeeper/default/get-reports';
+                $event->rules['/lightkeeper/log-audit'] = 'lightkeeper/default/report-audit';
             }
         );
 
