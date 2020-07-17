@@ -88,7 +88,7 @@ async function runAudit(e){
     const data = {
         url: widget.dataset.url,
     };
-    const request = await fetch('http://134.122.30.183:3000/audit', {
+    const request = await fetch('https://lightkeeperaudit.com/audit', {
         method: 'POST',
         headers: new Headers({
             'Content-Type': 'application/json',
