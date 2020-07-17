@@ -19,7 +19,7 @@ class WebVitalReportRecord extends ActiveRecord
 {
     public static function tableName()
     {
-        return '{{%web_vitals}}';
+        return '{{%lightkeeper_web_vitals}}';
     }
 
     public function rules()

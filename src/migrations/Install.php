@@ -39,11 +39,11 @@ class Install extends Migration
     {
         $tablesCreated = true;
 
-        $vitalsTable = Craft::$app->db->schema->getTableSchema('{{%web_vitals}}');
+        $vitalsTable = Craft::$app->db->schema->getTableSchema('{{%lightkeeper_web_vitals}}');
         if (is_null($vitalsTable))
         {
             $this->createTable(
-                '{{%web_vitals}}',
+                '{{%lightkeeper_web_vitals}}',
                 [
                     'id' => $this->primaryKey(),
                     'cls' => $this->double()->notNull(),
@@ -73,11 +73,11 @@ class Install extends Migration
             $tablesCreated = false;
         }
 
-        $lighthouseTable = Craft::$app->db->schema->getTableSchema('{{%lighthouse_reports}}');
+        $lighthouseTable = Craft::$app->db->schema->getTableSchema('{{%lightkeeper_lighthouse_reports}}');
         if (is_null($lighthouseTable))
         {
             $this->createTable(
-                '{{%lighthouse_reports}}',
+                '{{%lightkeeper_lighthouse_reports}}',
                 [
                     'id' => $this->primaryKey(),
                     'pageId' => $this->integer()->notNull(),
@@ -103,19 +103,29 @@ class Install extends Migration
     {
         $this->createIndex(
             $this->db->getIndexName(
-                '{{%web_vitals}}',
+                '{{%lightkeeper_web_vitals}}',
                 ['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'os', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'threads', 'ram', 'connection', 'storage', 'ip', 'url'],
                 true,  
             ),
-            '{{%web_vitals}}',
+            '{{%lightkeeper_web_vitals}}',
             ['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'os', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'threads', 'ram', 'connection', 'storage', 'ip', 'url', 'dateCreated', 'dateUpdated', 'uid'],
+            true
+        );
+        $this->createIndex(
+            $this->db->getIndexName(
+                '{{%lightkeeper_lighthouse_reports}}',
+                ['id', 'pageId', 'performance', 'accessibility', 'bestPractices', 'seo'],
+                true,  
+            ),
+            '{{%lightkeeper_lighthouse_reports}}',
+            ['id', 'pageId', 'performance', 'accessibility', 'bestPractices', 'seo', 'dateCreated', 'dateUpdated', 'uid'],
             true
         );
     }
 
     protected function removeTables()
     {
-        $this->dropTableIfExists('{{%web_vitals}}');
-        $this->dropTableIfExists('{{%lighthouse_reports}}');
+        $this->dropTableIfExists('{{%lightkeeper_web_vitals}}');
+        $this->dropTableIfExists('{{%lightkeeper_lighthouse_reports}}');
     }
 }

@@ -19,7 +19,7 @@ class LighthouseReportRecord extends ActiveRecord
 {
     public static function tableName()
     {
-        return '{{%lighthouse_reports}}';
+        return '{{%lightkeeper_lighthouse_reports}}';
     }
 
     public function rules()
