@@ -1,6 +1,6 @@
 # Lightkeeper
 
-Lightkeeper helps to integrate and automate Google Lighthouse testing alongside performance monitoring.
+Lightkeeper integrates Google Lighthouse testing alongside continuous performance monitoring.
 
 ## Requirements
 
