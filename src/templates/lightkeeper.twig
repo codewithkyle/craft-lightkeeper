@@ -66,6 +66,6 @@
             </svg>
         </svg-circle-spinner>
     </div>
-    <p class="js-error lightkeeper-error">{{ "Something went wrong, please try again later."|t }}</p>
+    <p class="js-error lightkeeper-error" data-general="{{ 'Something went wrong please try again later.'|t }}" data-local="{{ 'Lighthouse failed to audit the page. Double-check this page is publically accessible outside your local network.'|t }}"></p>
     <p class="js-empty lightkeeper-empty">{{ "Click run test to begin the Lighthouse audit."|t }}</p>
 </div>

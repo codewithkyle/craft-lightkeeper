@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+## 1.0.1 - 2020-07-18
+
+### Fixed
+
+- Lighthouse audits fail with a custom error message when testing local URLs
+
 ## 1.0.0 - 2020-07-17
 
 ### Added

@@ -9,7 +9,8 @@ const   runTestButton = document.body.querySelector('.js-run-test'),
         seoNumber = document.body.querySelector('.js-seo-number'),
         widget = document.body.querySelector('.js-lightkeeper-widget'),
         maxOffset = 251,
-        pageUrl = widget.dataset.url;
+        pageUrl = widget.dataset.url,
+        errorEl = widget.querySelector('.js-error');
 
 let reportId = widget.dataset.reportId,
     pageId = widget.dataset.pageId;
@@ -101,24 +102,30 @@ async function runAudit(e){
         body: JSON.stringify(data),
     });
     const response = await request.json();
-    if (request.ok){
-        widget.setAttribute('state', 'idling');
+    if (request.ok){    
+        if (response.accessibility === null || response.performance === null || response.seo === null || response.bestPractices === null){
+            widget.setAttribute('state', 'error');
+            errorEl.innerText = errorEl.dataset.local;
+        }else{
+            widget.setAttribute('state', 'idling');
 
-        performanceLine.style.strokeDashoffset = maxOffset;
-        accessibilityLine.style.strokeDashoffset = maxOffset;
-        bestPracticesLine.style.strokeDashoffset = maxOffset;
-        seoLine.style.strokeDashoffset = maxOffset;
-        performanceLine.setAttribute('level', 'neutral');
-        accessibilityLine.setAttribute('level', 'neutral');
-        bestPracticesLine.setAttribute('level', 'neutral');
-        seoLine.setAttribute('level', 'neutral');
+            performanceLine.style.strokeDashoffset = maxOffset;
+            accessibilityLine.style.strokeDashoffset = maxOffset;
+            bestPracticesLine.style.strokeDashoffset = maxOffset;
+            seoLine.style.strokeDashoffset = maxOffset;
+            performanceLine.setAttribute('level', 'neutral');
+            accessibilityLine.setAttribute('level', 'neutral');
+            bestPracticesLine.setAttribute('level', 'neutral');
+            seoLine.setAttribute('level', 'neutral');
 
-        setTimeout(()=>{
-            animateValues(response);
-        }, 150);
-        reportAudit(response);
+            setTimeout(()=>{
+                animateValues(response);
+            }, 150);
+            reportAudit(response);
+        }
     }else{
         widget.setAttribute('state', 'error');
+        errorEl.innerText = errorEl.dataset.general;
         console.log(response);
     }
 }
