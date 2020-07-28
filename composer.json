@@ -2,7 +2,7 @@
     "name": "codewithkyle/lightkeeper",
     "description": "Lightkeeper integrates Google Lighthouse testing alongside continuous performance monitoring.",
     "type": "craft-plugin",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "keywords": [
         "craft",
         "cms",

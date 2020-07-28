@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Fixed
 
+- enables new CP section navigation link
+
+## 1.0.2 - 2020-07-28
+
+### Fixed
+
 - reinstallation bug -- plugin couldn't be reinstalled after being uninstalled
 - updated CP navigation link location
 

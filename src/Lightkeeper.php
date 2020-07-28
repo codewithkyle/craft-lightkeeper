@@ -79,7 +79,7 @@ class Lightkeeper extends Plugin
      *
      * @var bool
      */
-    public $hasCpSection = false;
+    public $hasCpSection = true;
 
     // Public Methods
     // =========================================================================
