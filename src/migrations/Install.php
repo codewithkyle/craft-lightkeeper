@@ -103,22 +103,22 @@ class Install extends Migration
     {
         $this->createIndex(
             $this->db->getIndexName(
-                '{{%lightkeeper_web_vitals}}',
-                ['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'os', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'threads', 'ram', 'connection', 'storage', 'ip', 'url'],
-                true,  
+                '{{%lightkeeper_lighthouse_reports}}',
+                'id',
+                true
             ),
-            '{{%lightkeeper_web_vitals}}',
-            ['id', 'cls', 'fid', 'lcp', 'fcp', 'ttfb', 'os', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'threads', 'ram', 'connection', 'storage', 'ip', 'url', 'dateCreated', 'dateUpdated', 'uid'],
+            '{{%lightkeeper_lighthouse_reports}}',
+            'id',
             true
         );
         $this->createIndex(
             $this->db->getIndexName(
                 '{{%lightkeeper_lighthouse_reports}}',
-                ['id', 'pageId', 'performance', 'accessibility', 'bestPractices', 'seo'],
-                true,  
+                'pageId',
+                true
             ),
             '{{%lightkeeper_lighthouse_reports}}',
-            ['id', 'pageId', 'performance', 'accessibility', 'bestPractices', 'seo', 'dateCreated', 'dateUpdated', 'uid'],
+            'pageId',
             true
         );
     }

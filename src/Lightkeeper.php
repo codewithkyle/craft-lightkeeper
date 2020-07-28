@@ -111,19 +111,6 @@ class Lightkeeper extends Plugin
             }
         );
 
-        Event::on(
-            Cp::class,
-            Cp::EVENT_REGISTER_CP_NAV_ITEMS,
-            function(RegisterCpNavItemsEvent $event)
-            {
-                $event->navItems[] = [
-                    'url' => 'lightkeeper/web-vitals',
-                    'label' => 'Performance Audits',
-                    'icon' => '@lightkeeper/assetbundles/lightkeeper/dist/img/lightkeeper-icon.svg',
-                ];
-            }
-        );
-
         Craft::$app->view->hook('cp.entries.edit.details', function (array &$context) {
             /** @var EntryModel $entry **/
             $entry = $context['entry'];
@@ -144,6 +131,15 @@ class Lightkeeper extends Plugin
             ),
             __METHOD__
         );
+    }
+
+    public function getCpNavItem ()
+	{
+        $item = parent::getCpNavItem();
+        $item['url'] = 'lightkeeper/web-vitals';
+        $item['label'] = 'Performance Audits';
+        $item['icon'] = '@lightkeeper/assetbundles/lightkeeper/dist/img/lightkeeper-icon.svg';
+        return $item;
     }
 
     // Protected Methods
