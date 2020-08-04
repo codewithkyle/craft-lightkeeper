@@ -88,6 +88,10 @@ primary-data span{
     font-size: 14px;
 }
 
+.full{
+    width: 100%;
+}
+
 .load-button{
     display: block;
     margin: 24px auto 0;
@@ -100,17 +104,10 @@ primary-data span{
     }
 }
 
-@media (min-width: 768px){
-    primary-data div,
-    secondary-data div{
-        width: 33%;
-    }
-}
-
 @media (min-width: 1024px){
     primary-data div,
     secondary-data div{
-        width: 25%;
+        width: 33%;
     }
 }
 
