@@ -1,6 +1,6 @@
 import { getCLS, getFID, getLCP, getFCP, getTTFB } from "https://unpkg.com/web-vitals@0.2.3/dist/web-vitals.es5.min.js?module";
 import { parseUserAgent } from "https://unpkg.com/detect-browser@5.1.1/es/index.js";
-import { v4 as uuid } from 'https://jspm.dev/uuid';
+import { v4 as uuid } from 'https://jspm.dev/npm:uuid@8.3.0';
 
 let cls = null,
     fid = null,
