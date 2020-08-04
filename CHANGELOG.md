@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+## 1.1.0 - 2020-08-04
+
 ### Added
 
 - switched `{{ craft.lightkeeper.load() }}` to a template hook `{% hook 'lightkeeper' %}` [#4](https://github.com/codewithkyle/craft-lightkeeper/issues/4)
