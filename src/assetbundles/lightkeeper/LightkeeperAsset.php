@@ -45,8 +45,8 @@ class LightkeeperAsset extends AssetBundle
         // define the path that your publishable resources live
         $this->sourcePath = "@codewithkyle/lightkeeper/assetbundles/lightkeeper/dist";
 
-        $settings = Lightkeeper::getInstance()->getSettings();
-        if ($settings->anonymous)
+        $anonymous = \codewithkyle\lightkeeper\Lightkeeper::getInstance()->settings->anonymous;
+        if ($anonymous)
         {
             $this->js = [
                 'js/lightkeeper-anonymous.js',

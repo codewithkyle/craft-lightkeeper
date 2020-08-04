@@ -76,9 +76,6 @@ secondary-data div{
     text-overflow: ellipsis;
     overflow: hidden;
 }
-secondary-data div:last-child{
-    width: 100%;
-}
 secondary-data span.bold{
     font-weight: bold;
     display: inline-block;
@@ -120,10 +117,6 @@ primary-data span{
 @media (min-width: 1600px){
     primary-data div,
     secondary-data div{
-        width: 16.66%;
-    }
-
-    secondary-data div:last-child{
-        width: calc(16.66% * 4);
+        width: 20%;
     }
 }
