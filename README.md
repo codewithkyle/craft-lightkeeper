@@ -10,7 +10,7 @@ This plugin requires Craft CMS 3.4.0 or later.
 
 #### Web Vitals
 
-Record web vitals by adding `{{ craft.lightkeeper.load() }}` to the documents HEAD within your base template.
+Record web vitals by adding `{% hook 'lightkeeper' %}` to the documents HEAD within your base template.
 
 #### Lighthouse Audits
 

@@ -50,6 +50,25 @@
 }}
 
 {{ forms.lightswitchField({
+        label: 'Anonymous Users',
+        instructions: 'When enabled a UUID will used instead of a users IP address in the Performance Audit section',
+        id: 'anonymous',
+        name: 'anonymous',
+        on: settings.anonymous,
+    })
+}}
+
+{{ forms.lightswitchField({
+        label: 'Compact Widget',
+        instructions: 'When enabled the compact version of the Lighthouse Audit widget will be used.',
+        id: 'compact',
+        name: 'compact',
+        on: settings.compact,
+    })
+}}
+
+
+{{ forms.lightswitchField({
         label: 'Enable Advanced Settings',
         instructions: 'Enable and save to view the advanced configuration settings.',
         id: 'advancedSettings',

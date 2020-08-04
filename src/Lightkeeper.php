@@ -123,6 +123,11 @@ class Lightkeeper extends Plugin
             return Lightkeeper::getInstance()->lightkeeperService->renderEntryTemplate($category);
         });
 
+        Craft::$app->view->hook('lightkeeper', function(array &$context) {
+            $view = Craft::$app->getView();
+            $view->registerAssetBundle('codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\LightkeeperAsset');
+        });
+
         Craft::info(
             Craft::t(
                 'lightkeeper',

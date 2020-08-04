@@ -67,6 +67,12 @@ class Settings extends Model
     /** @var bool */
     public $advancedSettings = false;
 
+    /** @var bool */
+    public $anonymous = false;
+
+    /** @var bool */
+    public $compact = false;
+
     // Public Methods
     // =========================================================================
 
@@ -96,8 +102,8 @@ class Settings extends Model
             [['minimumAccessibility', 'minimumBestPractices', 'minimumSeo'], 'default', 'value' => 100],
             [['minimumPerformance'], 'default', 'value' => 90],
 
-            [['advancedSettings'], 'boolean'],
-            [['advancedSettings'], 'default', 'value' => false],
+            [['advancedSettings', 'anonymous', 'compact'], 'boolean'],
+            [['advancedSettings', 'anonymous', 'compact'], 'default', 'value' => false],
 
             [['developerEmail'], 'email'],
             [['developerEmail'], 'default', 'value' => null],

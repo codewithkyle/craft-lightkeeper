@@ -28,12 +28,12 @@
                         <span class="bold">TTFB:</span>
                         <span>{{ report.ttfb }}</span>
                     </div>
+                </primary-data>
+                <secondary-data>
                     <div>
                         <span class="bold">Logged:</span>
                         <span>{{ report.dateCreated }}</span>
                     </div>
-                </primary-data>
-                <secondary-data>
                     <div>
                         <span class="bold">Browser:</span>
                         <span>{{ report.browser }}</span>
@@ -62,11 +62,12 @@
                         <span class="bold">Storage:</span>
                         <span>{{ report.storage }}</span>
                     </div>
-                    <div>
-                        <span class="bold">IP:</span>
+                    <div class="full">
+                        {% set anon = craft.app.getModule('lightkeeper').getSettings().anonymous %}
+                        <span class="bold">{{ anon ? 'UUID' : 'IP' }}:</span>
                         <span>{{ report.ip }}</span>
                     </div>
-                    <div>
+                    <div class="full">
                         <span class="bold">URL:</span>
                         <span>{{ report.url }}</span>
                     </div>

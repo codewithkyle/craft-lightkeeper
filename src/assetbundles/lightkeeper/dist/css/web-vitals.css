@@ -76,9 +76,6 @@ secondary-data div{
     text-overflow: ellipsis;
     overflow: hidden;
 }
-secondary-data div:last-child{
-    width: 100%;
-}
 secondary-data span.bold{
     font-weight: bold;
     display: inline-block;
@@ -89,6 +86,10 @@ primary-data span{
     display: inline-block;
     margin: 0 2px;
     font-size: 14px;
+}
+
+.full{
+    width: 100%;
 }
 
 .load-button{
@@ -103,27 +104,16 @@ primary-data span{
     }
 }
 
-@media (min-width: 768px){
+@media (min-width: 1024px){
     primary-data div,
     secondary-data div{
         width: 33%;
     }
 }
 
-@media (min-width: 1024px){
-    primary-data div,
-    secondary-data div{
-        width: 25%;
-    }
-}
-
 @media (min-width: 1600px){
     primary-data div,
     secondary-data div{
-        width: 16.66%;
-    }
-
-    secondary-data div:last-child{
-        width: calc(16.66% * 4);
+        width: 20%;
     }
 }

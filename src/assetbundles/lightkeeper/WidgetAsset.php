@@ -49,9 +49,19 @@ class WidgetAsset extends AssetBundle
             'js/widget.js',
         ];
 
-        $this->css = [
-            'css/widget.css',
-        ];
+        $compact = \codewithkyle\lightkeeper\Lightkeeper::getInstance()->settings->compact;
+        if ($compact)
+        {
+            $this->css = [
+                'css/compact-widget.css',
+            ];
+        }
+        else
+        {
+            $this->css = [
+                'css/widget.css',
+            ];
+        }
 
         $this->jsOptions = ['type' => 'module'];
 

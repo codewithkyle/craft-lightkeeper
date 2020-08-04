@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+### Added
+
+- switched `{{ craft.lightkeeper.load() }}` to a template hook `{% hook 'lightkeeper' %}` [#4](https://github.com/codewithkyle/craft-lightkeeper/issues/4)
+- Anonymous Users setting -- swaps IP collection with a UUID per session [#2](https://github.com/codewithkyle/craft-lightkeeper/issues/2)
+- Compact setting -- decreases the size of the Lighthouse Audit widget [#3](https://github.com/codewithkyle/craft-lightkeeper/issues/3)
+
+### Fixed 
+
+- overflow issues in Performance Audits section
+
 ## 1.0.3 - 2020-07-28
 
 ### Fixed

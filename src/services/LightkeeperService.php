@@ -48,7 +48,20 @@ class LightkeeperService extends Component
         $report->os = $params['os'];
         $report->storage = $params['storage'];
         $report->url = $params['url'];
-        $report->ip = $ip;
+        
+        $settings = Lightkeeper::getInstance()->getSettings();
+        if (isset($params['uuid']))
+        {
+            $report->ip = $params['uuid'];
+        }
+        else if (!$settings->anonymous)
+        {
+            $report->ip = $ip;
+        }
+        else
+        {
+            $report->ip = null;
+        }
 
         // Audits
         $report->cls = $params['cls'];
