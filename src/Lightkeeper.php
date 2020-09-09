@@ -124,8 +124,12 @@ class Lightkeeper extends Plugin
         });
 
         Craft::$app->view->hook('lightkeeper', function(array &$context) {
-            $view = Craft::$app->getView();
-            $view->registerAssetBundle('codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\LightkeeperAsset');
+            $request = Craft::$app->getRequest();
+            if (!$request->getIsPreview())
+            {
+                $view = Craft::$app->getView();
+                $view->registerAssetBundle('codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\LightkeeperAsset');
+            }
         });
 
         Craft::info(

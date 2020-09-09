@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+### Fixed
+
+- web vitals are no longer logged on pages when using the Live Preview functionality [#7](https://github.com/codewithkyle/craft-lightkeeper/issues/7)
+
 ## 1.1.0 - 2020-08-04
 
 ### Added
