@@ -4,7 +4,7 @@ Lightkeeper integrates Google Lighthouse testing alongside continuous performanc
 
 ## Requirements
 
-This plugin requires Craft CMS 3.4.0 or later.
+This plugin requires Craft CMS 3.0.0 or later.
 
 ## Usage
 
@@ -24,7 +24,6 @@ The Lighthouse audit widget is available for all Entries and Categories that con
         * Accessability ✔️
         * Best Practices ✔️
     * Send email on poor performance ✔️
-    * Developer email address ✔️
     * Side panel component ✔️
         * Manual test button ✔️
         * Accessability test (0/100) ✔️
@@ -44,3 +43,6 @@ The Lighthouse audit widget is available for all Entries and Categories that con
         * Browser ✔️
         * Window size ✔️
         * Available storage ✔️
+        * Page ✔️
+        * Users IP ✔️
+        * Anonymous users ✔️
