@@ -214,14 +214,17 @@ class LightkeeperService extends Component
             }
 
             // Do we need to send an email?
-            if (!$passedAccessibility || !$passedBestPractices || !$passedPerformance)
+            if (!empty($settings['developerEmail']))
             {
-                $html = '
-                    The page <a href="' . $params['url'] . '" target="_blank">' . $params['url'] . '</a> has failed a Lighthouse audit:<br/>
-                    <strong>Performance:</strong> ' . $params['performance'] * 100 . '/' . $settings['minimumPerformance'] . '<br/>
-                    <strong>Accessibility:</strong> ' . $params['accessibility'] * 100 . '/' . $settings['minimumAccessibility'] . '<br/>
-                    <strong>Best Practices:</strong> ' . $params['bestPractices'] * 100 . '/' . $settings['minimumBestPractices'];
-                $this->sendMail($html, Craft::$app->getSystemName() . ' - Lighthouse Audit Failed', $settings['developerEmail']);
+                if (!$passedAccessibility || !$passedBestPractices || !$passedPerformance)
+                {
+                    $html = '
+                        The page <a href="' . $params['url'] . '" target="_blank">' . $params['url'] . '</a> has failed a Lighthouse audit:<br/>
+                        <strong>Performance:</strong> ' . $params['performance'] * 100 . '/' . $settings['minimumPerformance'] . '<br/>
+                        <strong>Accessibility:</strong> ' . $params['accessibility'] * 100 . '/' . $settings['minimumAccessibility'] . '<br/>
+                        <strong>Best Practices:</strong> ' . $params['bestPractices'] * 100 . '/' . $settings['minimumBestPractices'];
+                    $this->sendMail($html, Craft::$app->getSystemName() . ' - Lighthouse Audit Failed', $settings['developerEmail']);
+                }
             }
         }
 

@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+## 1.1.1 - 2020-09-09
+
+### Fixed
+
+- web vitals are no longer logged on pages when using the Live Preview functionality [#7](https://github.com/codewithkyle/craft-lightkeeper/issues/7)
+- performance emails check for the developers email address before sending
+
+## 1.1.0 - 2020-08-04
+
 ### Added
 
 - switched `{{ craft.lightkeeper.load() }}` to a template hook `{% hook 'lightkeeper' %}` [#4](https://github.com/codewithkyle/craft-lightkeeper/issues/4)
