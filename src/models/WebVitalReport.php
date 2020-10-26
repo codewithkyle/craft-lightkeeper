@@ -16,7 +16,7 @@ use Craft;
 use craft\base\Model;
 
 /**
- * Class WebVitalReportModel
+ * Class WebVitalReport
  * 
  * @property int    $id
  * @property float  $cls
@@ -29,7 +29,7 @@ use craft\base\Model;
  * @property string $connection
  * @property float  $storage
  */
-class WebVitalReportModel extends Model
+class WebVitalReport extends Model
 {
     /** @var init */
     public $id;

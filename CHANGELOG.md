@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+## 1.1.2 - 2020-10-26
+
+### Fixed
+
+- composer 2 compatibility [#9](https://github.com/codewithkyle/craft-lightkeeper/issues/9)
+
 ## 1.1.1 - 2020-09-09
 
 ### Fixed
