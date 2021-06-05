@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+### Fixed
+
+- 3rd party library import statements no longer import explicit version (they now include the `^` character)
+
+### Removed
+
+- Lighthouse performance auditing widget ([Explainer](https://github.com/codewithkyle/craft-lightkeeper/issues/10))
+
 ## 1.1.2 - 2020-10-26
 
 ### Fixed

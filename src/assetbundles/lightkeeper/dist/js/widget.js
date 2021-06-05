@@ -125,8 +125,9 @@ async function runAudit(e){
         }
     }else{
         widget.setAttribute('state', 'error');
-        errorEl.innerText = errorEl.dataset.general;
-        console.log(response);
+        // errorEl.innerText = errorEl.dataset.general;
+        errorEl.innerHTML = `Support for this widget has been revoked, please update the Lightkeeper plugin to remove this pannel. If you wish to continue using Lighthouse reports try using <a href="https://web.dev/measure/" target="_blank" rel="noopener">Google's official testing site</a>. We appoligize for the inconvienece.`;
+        // console.log(response);
     }
 }
 runTestButton.addEventListener('click', runAudit);

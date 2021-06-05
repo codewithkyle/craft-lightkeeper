@@ -1,6 +1,6 @@
 # Lightkeeper
 
-Lightkeeper integrates Google Lighthouse testing alongside continuous performance monitoring.
+Continuous performance monitoring for your Craft CMS websites.
 
 ## Requirements
 

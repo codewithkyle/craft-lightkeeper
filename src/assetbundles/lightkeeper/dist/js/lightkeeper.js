@@ -1,5 +1,5 @@
-import { getCLS, getFID, getLCP, getFCP, getTTFB } from "https://unpkg.com/web-vitals@0.2.3/dist/web-vitals.es5.min.js?module";
-import { parseUserAgent } from "https://unpkg.com/detect-browser@5.1.1/es/index.js";
+import { getCLS, getFID, getLCP, getFCP, getTTFB } from "https://unpkg.com/web-vitals@^0.2/dist/web-vitals.es5.min.js?module";
+import { parseUserAgent } from "https://unpkg.com/detect-browser@^5/es/index.js";
 
 let cls = null,
     fid = null,

@@ -16,6 +16,7 @@
     })
 }}
 
+{#
 {{ forms.textField({
         type: 'number',
         label: 'Minimum Performance',
@@ -48,6 +49,7 @@
         value: settings.minimumBestPractices,
     })
 }}
+#}
 
 {{ forms.lightswitchField({
         label: 'Anonymous Users',
@@ -58,6 +60,7 @@
     })
 }}
 
+{#
 {{ forms.lightswitchField({
         label: 'Compact Widget',
         instructions: 'When enabled the compact version of the Lighthouse Audit widget will be used.',
@@ -66,7 +69,7 @@
         on: settings.compact,
     })
 }}
-
+#}
 
 {{ forms.lightswitchField({
         label: 'Enable Advanced Settings',
