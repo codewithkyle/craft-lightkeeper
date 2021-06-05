@@ -125,10 +125,28 @@ class Lightkeeper extends Plugin
 
         Craft::$app->view->hook('lightkeeper', function(array &$context) {
             $request = Craft::$app->getRequest();
-            if (!$request->getIsPreview())
+            if (!$request->isLivePreview && !$request->isCpRequest)
             {
                 $view = Craft::$app->getView();
                 $view->registerAssetBundle('codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\LightkeeperAsset');
+            }
+        });
+
+        Craft::$app->view->hook('lightkeeper-raw', function(array &$context) {
+            $request = Craft::$app->getRequest();
+            if (!$request->isLivePreview && !$request->isCpRequest)
+            {
+                $view = Craft::$app->getView();
+                $anonymous = \codewithkyle\lightkeeper\Lightkeeper::getInstance()->settings->anonymous;
+				if ($anonymous)
+                {
+					$file = \craft\helpers\FileHelper::normalizePath(__DIR__ . "/assetbundles/lightkeeper/dist/js/lightkeeper-anonymous.js");
+				}
+                else
+                {
+					$file = \craft\helpers\FileHelper::normalizePath(__DIR__ . "/assetbundles/lightkeeper/dist/js/lightkeeper.js");
+				}
+				return \craft\helpers\Template::raw('<script type="module">' . \file_get_contents($file) . "</script>");
             }
         });
 

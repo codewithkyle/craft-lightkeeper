@@ -1,6 +1,16 @@
-import { getCLS, getFID, getLCP, getFCP, getTTFB } from "https://unpkg.com/web-vitals@0.2.3/dist/web-vitals.es5.min.js?module";
-import { parseUserAgent } from "https://unpkg.com/detect-browser@5.1.1/es/index.js";
-import { v4 as uuid } from 'https://jspm.dev/npm:uuid@8.3.0';
+import { getCLS, getFID, getLCP, getFCP, getTTFB } from "https://unpkg.com/web-vitals@^0.2/dist/web-vitals.es5.min.js?module";
+import { parseUserAgent } from "https://unpkg.com/detect-browser@^5/es/index.js";
+
+/**
+ * @see https://stackoverflow.com/a/2117523
+ * @copyright CC BY-SA 4.0
+ * @returns {string} UUIDv4
+ */
+function uuid() {
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+}
 
 let cls = null,
     fid = null,

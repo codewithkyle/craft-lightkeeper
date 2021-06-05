@@ -8,4 +8,6 @@ This plugin requires Craft CMS 3.0.0 or later.
 
 ## Usage
 
-Record web vitals by adding `{% hook 'lightkeeper' %}` to the documents `<head>` within your base template.
+Register the Lightkeeper asset bundle by adding `{% hook 'lightkeeper' %}` within your base template.
+
+Alternatively you can inject the `<script>` element into your document by uising `{% hook 'lightkeeper-raw' %}` instead.

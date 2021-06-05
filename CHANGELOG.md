@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+## 1.3.0 - 2021-06-05
+
+### Added
+
+- new `{% hook 'lightkeeper-raw' %}` hook injects the asset bundles JavaScript directly into the document
+
+### Fixed
+
+- `lightkeeper-anonymous.js` uses the same dependency versions
+
+### Removed
+
+- Lightkeeper anonymouse UUID dependency (switched to the native [Crypto API](https://caniuse.com/?search=crypto))
+
 ## 1.2.0 - 2021-06-05
 
 ### Fixed
