@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+### 1.3.1 - 2022-05-22
+
+### Added
+
+- Craft 4 support
+- PHP 8 support
+
 ## 1.3.0 - 2021-06-05
 
 ### Added

@@ -31,61 +31,61 @@ use craft\base\Model;
  */
 class WebVitalReport extends Model
 {
-    /** @var init */
-    public $id;
+    /** @var int */
+    public int $id;
 
     /** @var float */
-    public $cls;
+    public float $cls;
 
     /** @var float */
-    public $fid;
+    public float $fid;
 
     /** @var float */
-    public $fcp;
+    public float $fcp;
 
     /** @var float */
-    public $ttfb;
+    public float $ttfb;
 
     /** @var float */
-    public $lcp;
+    public float $lcp;
 
     /** @var string */
-    public $browser;
+    public string $browser;
 
     /** @var string */
-    public $browserVersion;
+    public string $browserVersion;
 
     /** @var string */
-    public $os;
+    public string $os;
 
     /** @var int */
-    public $screenWidth;
+    public int $screenWidth;
 
     /** @var int */
-    public $screenHeight;
+    public int $screenHeight;
 
     /** @var int */
-    public $threads;
+    public int $threads;
 
     /** @var int */
-    public $ram;
+    public int $ram;
 
     /** @var string */
-    public $connection;
+    public string $connection;
 
     /** @var float */
-    public $storage;
+    public float $storage;
 
     /** @var string */
-    public $ip;
+    public string $ip;
 
     /** @var string */
-    public $url;
+    public string $url;
 
     /**
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [

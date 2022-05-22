@@ -18,7 +18,7 @@ use craft\db\Migration;
 
 class Install extends Migration
 {
-    public function safeUp()
+    public function safeUp(): bool
     {
         if ($this->createTables())
         {
@@ -29,13 +29,13 @@ class Install extends Migration
         return true;
     }
 
-    public function safeDown()
+    public function safeDown(): bool
     {
         $this->removeTables();
         return true;
     }
 
-    protected function createTables()
+    protected function createTables(): bool
     {
         $tablesCreated = true;
 
@@ -99,7 +99,7 @@ class Install extends Migration
         return $tablesCreated;
     }
 
-    protected function createIndexes()
+    protected function createIndexes(): void
     {
         $this->createIndex(
             $this->db->getIndexName(
@@ -123,7 +123,7 @@ class Install extends Migration
         );
     }
 
-    protected function removeTables()
+    protected function removeTables(): void
     {
         $this->dropTableIfExists('{{%lightkeeper_web_vitals}}');
         $this->dropTableIfExists('{{%lightkeeper_lighthouse_reports}}');

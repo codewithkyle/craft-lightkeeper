@@ -17,12 +17,12 @@ use craft\db\ActiveRecord;
 
 class WebVitalReportRecord extends ActiveRecord
 {
-    public static function tableName()
+    public static function tableName(): string 
     {
         return '{{%lightkeeper_web_vitals}}';
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             [['cls', 'fid', 'fcp', 'ttfb', 'lcp', 'browser', 'browserVersion', 'screenWidth', 'screenHeight', 'os', 'ip', 'url'], 'required'],

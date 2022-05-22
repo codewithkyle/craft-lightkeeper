@@ -16,18 +16,18 @@ use Craft;
 
 class LightkeeperVariable
 {
-    public function load()
+    public function load(): void
     {
         $view = Craft::$app->getView();
         $view->registerAssetBundle('codewithkyle\\lightkeeper\\assetbundles\\lightkeeper\\LightkeeperAsset');
     }
 
-    public function getReports($page = 0)
+    public function getReports($page = 0): array
     {
         return Lightkeeper::getInstance()->lightkeeperService->getWebVitalReports($page);
     }
 
-    public function checkCLS(float $value)
+    public function checkCLS(float $value): string
     {
         $threshold = Lightkeeper::getInstance()->getSettings()->clsThreshold;
         if ($value <= $threshold)
@@ -44,7 +44,7 @@ class LightkeeperVariable
         }
     }
 
-    public function checkFCP(float $value)
+    public function checkFCP(float $value): string
     {
         $threshold = Lightkeeper::getInstance()->getSettings()->fcpThreshold;
         if ($value <= $threshold)
@@ -61,7 +61,7 @@ class LightkeeperVariable
         }
     }
 
-    public function checkLCP(float $value)
+    public function checkLCP(float $value): string
     {
         $threshold = Lightkeeper::getInstance()->getSettings()->lcpThreshold;
         if ($value <= $threshold)
@@ -78,7 +78,7 @@ class LightkeeperVariable
         }
     }
 
-    public function checkFID(float $value)
+    public function checkFID(float $value): string
     {
         $threshold = Lightkeeper::getInstance()->getSettings()->fidThreshold;
         if ($value <= $threshold)
@@ -95,7 +95,7 @@ class LightkeeperVariable
         }
     }
 
-    public function checkTTFB(float $value)
+    public function checkTTFB(float $value): string
     {
         $threshold = Lightkeeper::getInstance()->getSettings()->ttfbThreshold;
         if ($value <= $threshold)
@@ -112,7 +112,7 @@ class LightkeeperVariable
         }
     }
 
-    public function getLighthouseReport(int $pageId)
+    public function getLighthouseReport(int $pageId): \codewithkyle\lightkeeper\records\LighthouseReportRecord
     {
         return Lightkeeper::getInstance()->lightkeeperService->getLighthouseReport($pageId);
     }

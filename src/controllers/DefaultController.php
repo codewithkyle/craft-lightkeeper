@@ -18,11 +18,11 @@ use codewithkyle\lightkeeper\services\LightkeeperService;
 
 class DefaultController extends Controller
 {
-    protected $allowAnonymous = [
+    protected array $allowAnonymous = [
         'report'
     ];
 
-    public $enableCsrfValidation = false;
+    public bool $enableCsrfValidation = false;
 
     public function actionReportVitals()
     {

@@ -32,7 +32,7 @@ class LightkeeperService extends Component
     // Public Methods
     // =========================================================================
 
-    public function logWebVitalReport(Array $params, String $ip)
+    public function logWebVitalReport(Array $params, String $ip): void
     {
         $report = new WebVitalReport();
         $report->setIsNewRecord(true);
@@ -76,7 +76,7 @@ class LightkeeperService extends Component
         }
     }
 
-    public function getWebVitalReports($page = 0)
+    public function getWebVitalReports($page = 0): array
     {
         $offset = 25 * $page;
         $rows = WebVitalReport::find()
@@ -84,7 +84,7 @@ class LightkeeperService extends Component
                         ->limit(26)
                         ->orderBy(['dateCreated' => SORT_DESC])
                         ->all();
-        $reports = array();
+        $reports = [];
         $helper = new \craft\helpers\DateTimeHelper();
         foreach ($rows as $report){
             $reports[] = [
@@ -109,7 +109,7 @@ class LightkeeperService extends Component
         return $reports;
     }
 
-    public function renderEntryTemplate($entryContext)
+    public function renderEntryTemplate($entryContext): ?string
     {
         $entry = Entry::find()->id($entryContext->id)->one();
         $ret = null;
@@ -121,7 +121,7 @@ class LightkeeperService extends Component
         }
         return $ret;
     }
-    public function renderCategoryTemplate($categoryContext)
+    public function renderCategoryTemplate($categoryContext): ?string
     {
         $category = Category::find()->id($categoryContext->id)->one();
         $ret = null;
@@ -134,7 +134,7 @@ class LightkeeperService extends Component
         return $ret;
     }
 
-    public function getLighthouseReport(int $pageId)
+    public function getLighthouseReport(int $pageId): LighthouseReport
     {
         $report = LighthouseReport::find()
                     ->where(['pageId' => $pageId])
@@ -142,7 +142,7 @@ class LightkeeperService extends Component
         return $report;
     }
 
-    public function logLighthouseReport(Array $params)
+    public function logLighthouseReport(Array $params): array
     {
         $report = null;
         $newRecord = false;

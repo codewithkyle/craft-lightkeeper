@@ -31,28 +31,28 @@ use craft\base\Model;
  */
 class LighthouseReport extends Model
 {
-    /** @var init */
-    public $id;
+    /** @var int */
+    public int $id;
 
-    /** @var init */
-    public $pageId;
-
-    /** @var float */
-    public $performance;
+    /** @var int */
+    public int $pageId;
 
     /** @var float */
-    public $accessibility;
+    public float $performance;
 
     /** @var float */
-    public $bestPractices;
+    public float $accessibility;
 
     /** @var float */
-    public $seo;
+    public float $bestPractices;
+
+    /** @var float */
+    public float $seo;
 
     /**
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [

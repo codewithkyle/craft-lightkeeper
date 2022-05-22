@@ -17,12 +17,12 @@ use craft\db\ActiveRecord;
 
 class LighthouseReportRecord extends ActiveRecord
 {
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%lightkeeper_lighthouse_reports}}';
     }
 
-    public function rules()
+    public function rules(): array 
     {
         return [
             [['pageId', 'performance', 'accessibility', 'bestPractices', 'seo'], 'required'],

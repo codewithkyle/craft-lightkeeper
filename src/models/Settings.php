@@ -35,43 +35,43 @@ class Settings extends Model
     // =========================================================================
 
     /** @var string */
-    public $developerEmail = null;
+    public ?string $developerEmail = null;
 
     /** @var int */
-    public $minimumPerformance = '90';
+    public int $minimumPerformance = 90;
 
     /** @var int */
-    public $minimumAccessibility = '100';
+    public int $minimumAccessibility = 100;
 
     /** @var int */
-    public $minimumBestPractices = '100';
+    public int $minimumBestPractices = 100;
 
     /** @var int */
-    public $minimumSeo = '100';
+    public int $minimumSeo = 100;
 
     /** @var int */
-    public $lcpThreshold = 2500;
+    public int $lcpThreshold = 2500;
 
     /** @var int */
-    public $fidThreshold = 100;
+    public int $fidThreshold = 100;
 
     /** @var float */
-    public $clsThreshold = 0.1;
+    public float $clsThreshold = 0.1;
 
     /** @var int */
-    public $fcpThreshold = 2000;
+    public int $fcpThreshold = 2000;
 
     /** @var int */
-    public $ttfbThreshold = 600;
+    public int $ttfbThreshold = 600;
 
     /** @var bool */
-    public $advancedSettings = false;
+    public bool $advancedSettings = false;
 
     /** @var bool */
-    public $anonymous = false;
+    public bool $anonymous = false;
 
     /** @var bool */
-    public $compact = false;
+    public bool $compact = false;
 
     // Public Methods
     // =========================================================================
@@ -86,7 +86,7 @@ class Settings extends Model
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['minimumPerformance', 'minimumAccessibility', 'minimumBestPractices', 'minimumSeo', 'lcpThreshold', 'fidThreshold', 'clsThreshold', 'fcpThreshold', 'ttfbThreshold'], 'required'],
