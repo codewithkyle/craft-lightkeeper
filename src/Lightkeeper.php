@@ -60,27 +60,6 @@ class Lightkeeper extends Plugin
     // Public Properties
     // =========================================================================
 
-    /**
-     * To execute your plugin’s migrations, you’ll need to increase its schema version.
-     *
-     * @var string
-     */
-    public string $schemaVersion = "1.0.0";
-
-    /**
-     * Set to `true` if the plugin should have a settings view in the control panel.
-     *
-     * @var bool
-     */
-    public bool $hasCpSettings = true;
-
-    /**
-     * Set to `true` if the plugin should have its own section (main nav item) in the control panel.
-     *
-     * @var bool
-     */
-    public bool $hasCpSection = true;
-
     // Public Methods
     // =========================================================================
 
