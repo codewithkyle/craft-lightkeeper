@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 
 - PHP 8 support
+- Craft 4 support
 
 ## 1.3.0 - 2021-06-05
 
