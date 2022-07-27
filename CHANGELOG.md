@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [Unreleased]
 
+## 1.3.5 - 2022-07-27
+
+### Fixed
+
+- Craft 4 support
+
 ## 1.3.4 - 2022-05-22
 
 ### Added
